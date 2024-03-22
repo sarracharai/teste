@@ -1,0 +1,28 @@
+<form>
+
+    <div [hidden] >
+        <label for="idPret" class="form-label">id Conge</label> 
+        <input [(ngModel)]="newPret.idPret" name="idPret"
+            class="form-control w-25">
+    </div>
+
+    <div>
+    <label for="statutPret" class="form-label" >type Conge</label> 
+    <input type="text" [(ngModel)]="newPret.statutPret" name="statutPret"
+        class="form-control" placeholder="Entrez un type...">
+    </div>
+
+     <div >
+        <label for="montant" class="form-label">Montant</label> 
+        <input type="number" [(ngModel)]="newPret.montant" name="montant"
+            class="form-control " placeholder="Entrez un montant...">
+    </div>
+
+    <div class="mt-4">
+        <button type="submit" (click)="addPret()" class="btn btn-success mb-2">Ajouter</button>
+      </div>
+</form> 
+
+
+
+

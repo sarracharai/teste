@@ -1,0 +1,32 @@
+.container {
+    max-width: 800px;
+    margin: 30px auto;
+  }
+  
+  .row {
+    margin-bottom: 1rem;
+  }
+  
+  .table {
+    margin-top: 1rem; /* Add margin to the top of the table */
+  }
+  
+  .table th,
+  .table td {
+    text-align: center;
+    padding: 12px;
+    border: 1px solid #ddd;
+  }
+  
+  .table th {
+    background-color: #f8f9fa;
+  }
+  
+  .table tbody tr {
+    transition: background-color 0.3s ease;
+  }
+  
+  .table tbody tr:hover {
+    background-color: #f0f0f0;
+  }
+  

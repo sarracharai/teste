@@ -1,0 +1,32 @@
+<div class="container">
+    <div>
+        <h2>Modifier Conge :</h2>
+    </div>
+    <form (ngSubmit)="updatePret()" class="row g-3">
+        <div class="col-md-6">
+            <div class="mb-3">
+                <label for="idPret" class="form-label">Id Pret:</label>
+                <input readonly type="text" [(ngModel)]="currentPret.idPret" id="idPret" name="idPret"
+                    class="form-control" [readonly]="true">
+            </div>
+
+            <div class="mb-3">
+                <label for="statutPret" class="form-label">Statut Pret:</label>
+                <input type="text" [(ngModel)]="currentPret.statutPret" id="statutPret" name="statutPret"
+                    class="form-control">
+            </div>
+
+            <div class="mb-3">
+                <label for="montant" class="form-label">Montant:</label>
+                <input type="number" [(ngModel)]="currentPret.montant" id="montant" name="montant" class="form-control">
+            </div>
+            
+
+            
+        </div>
+
+        <div class="col-12 mt-2">
+            <button (click)="updatePret()" class="btn btn-success">Modifier</button>
+        </div>
+    </form>
+</div>

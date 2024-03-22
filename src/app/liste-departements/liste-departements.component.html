@@ -1,0 +1,21 @@
+<div class="container">
+    <app-add-departement></app-add-departement> 
+   <div class="card shadow mb-4">
+       <div class="card-body">
+           <table class="table table-striped">
+               <thead>
+                   <tr>
+                       <th>Id</th>
+                       <th>Nom departement</th>
+                   </tr>
+               </thead>
+               <tbody *ngFor="let dep of departements">
+                   <tr>
+                       <td>{{dep.idDep}}</td>
+                       <td>{{dep.nomDep}}</td>
+                   </tr>
+               </tbody>
+           </table>
+       </div>
+   </div>
+</div>

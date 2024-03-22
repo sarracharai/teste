@@ -1,0 +1,52 @@
+<form>
+
+    <div [hidden] >
+        <label for="idConge" class="form-label">id Conge</label> 
+        <input [(ngModel)]="newConge.idConge" name="idConge"
+            class="form-control w-25">
+    </div>
+
+    <div>
+    <label for="typeConge" class="form-label" >type Conge</label> 
+    <input type="text" [(ngModel)]="newConge.typeConge" name="typeConge"
+        class="form-control" placeholder="Entrez un type...">
+    </div>
+
+     <div >
+        <label for="dateDebut" class="form-label">date Debut</label> 
+        <input type="date" [(ngModel)]="newConge.dateDebut" name="dateDebut"
+            class="form-control " placeholder="Entrez un date...">
+    </div>
+
+    <div>
+    <label for="dateFin" class="form-label" >date Fin</label> 
+    <input type="date" [(ngModel)]="newConge.dateFin" name="dateFin"
+        class="form-control" placeholder="Entrez un type...">
+    </div>
+
+
+    <div>
+    <label for="justifConge" class="form-label" >Justification de  Conge</label> 
+    <input type="text" [(ngModel)]="newConge.justifConge" name="justifConge"
+        class="form-control" placeholder="Entrez un type...">
+    </div>
+
+
+    <div>
+    <label for="DateDemande" class="form-label" >date Demande</label> 
+    <input type="date" [(ngModel)]="newConge.dateDemande" name="DateDemande"
+        class="form-control" placeholder="Entrez un type...">
+    </div>
+
+
+
+
+
+    <div class="mt-4">
+        <button type="submit" (click)="addConge()" class="btn btn-success mb-2">Ajouter</button>
+      </div>
+</form> 
+
+
+
+

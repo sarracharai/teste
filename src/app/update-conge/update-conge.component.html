@@ -1,0 +1,48 @@
+<div class="container">
+    <div>
+        <h2>Modifier Conge :</h2>
+    </div>
+    <form (ngSubmit)="updateConge()" class="row g-3">
+        <div class="col-md-6">
+            <div class="mb-3">
+                <label for="idConge" class="form-label">Id Personnel:</label>
+                <input readonly type="text" [(ngModel)]="currentConge.idConge" id="idConge" name="idConge"
+                    class="form-control" [readonly]="true">
+            </div>
+
+            <div class="mb-3">
+                <label for="typeConge" class="form-label">Type Conge:</label>
+                <input type="text" [(ngModel)]="currentConge.typeConge" id="typeConge" name="typeConge"
+                    class="form-control">
+            </div>
+
+            <div class="mb-3">
+                <label for="dateDebut" class="form-label">Date Debut:</label>
+                <input type="date"[ngModel]="currentConge.dateDebut | date: 'yyyy-MM-dd'" (ngModelChange)=" currentConge.dateDebut= $event"
+                 name="dateDebut" class="form-control">
+            </div>
+
+            <div class="mb-3">
+                <label for="dateFin" class="form-label">Date Fin:</label>
+                <input type="date" [ngModel]="currentConge.dateFin | date: 'yyyy-MM-dd'" (ngModelChange)=" currentConge.dateFin= $event"
+                 name="dateFin" class="form-control">
+            </div>
+
+            <div class="mb-3">
+                <label for="dateDemande" class="form-label">Date Demande:</label>
+                <input type="date" [ngModel]="currentConge.dateDemande | date: 'yyyy-MM-dd'" (ngModelChange)=" currentConge.dateDemande= $event" 
+                 name="dateDemande" class="form-control">
+            </div>
+
+            <div class="mb-3">
+                <label for="justifConge" class="form-label">Justification Conge:</label>
+                <input type="text" [(ngModel)]="currentConge.justifConge" id="justifConge" name="justifConge"
+                    class="form-control">
+            </div>
+        </div>
+
+        <div class="col-12 mt-2">
+            <button type="submit" class="btn btn-success">Modifier</button>
+        </div>
+    </form>
+</div>

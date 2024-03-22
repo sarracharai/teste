@@ -1,0 +1,74 @@
+<!-- personnel-update.component.html -->
+
+<div class="container">
+    <div>
+      <h2>Modifier Personnel :</h2>
+    </div>
+    <form (ngSubmit)="updatePersonnel()" class="row g-3">
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label for="idPersonnel" class="form-label">Id Personnel:</label>
+          <input  readonly type="text" [(ngModel)]="currentPersonnel.idPersonnel" id="idPersonnel" name="idPersonnel"
+            class="form-control" [readonly]="true">
+        </div>
+  
+        <div class="mb-3">
+          <label for="nomPersonnel" class="form-label">Nom Personnel:</label>
+          <input type="text" [(ngModel)]="currentPersonnel.nomPersonnel" id="nomPersonnel" name="nomPersonnel"
+            class="form-control">
+        </div>
+  
+        <div class="mb-3">
+          <label for="prenomPersonnel" class="form-label">Prenom Personnel:</label>
+          <input type="text" [(ngModel)]="currentPersonnel.prenomPersonnel" id="prenomPersonnel" name="prenomPersonnel"
+            class="form-control">
+        </div>
+  
+        <div class="mb-3">
+          <label for="dateNaissance" class="form-label">Date Naissance:</label>
+          <input type="date" [ngModel]="currentPersonnel.dateNaissance | date: 'yyyy-MM-dd'" (ngModelChange)=" currentPersonnel.dateNaissance= $event" 
+          name="dateNaissance" class="form-control"> </div>
+      </div>
+  
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label for="email" class="form-label">Email:</label>
+          <input type="text" [(ngModel)]="currentPersonnel.email" id="email" name="email" class="form-control">
+        </div>
+  
+        <div class="mb-3">
+          <label for="numTelephone" class="form-label">Numero Telephone:</label>
+          <input type="text" [(ngModel)]="currentPersonnel.numTelephone" id="numTelephone" name="numTelephone"
+            class="form-control">
+        </div>
+  
+        <div class="mb-3">
+          <label for="adresse" class="form-label">Adresse:</label>
+          <input type="text" [(ngModel)]="currentPersonnel.adresse" id="adresse" name="adresse" class="form-control">
+        </div>
+  
+        <div class="mb-3">
+          <label for="fonction" class="form-label">Fonction:</label>
+          <input type="text" [ngModel]="currentPersonnel.fonction" id="fonction" name="fonction" class="form-control">
+          </div>
+
+        <div class="mb-3">
+          <label for="departement" class="form-label">Departement:</label>
+          <select class="form-control form-control-lg" id="idDep" name="idDep" [(ngModel)]="updatedDepId"> 
+              <option *ngFor="let dep of departements" [ngValue]="dep.idDep">{{ dep.nomDep }}</option>
+          </select>
+      </div>
+      
+
+
+      </div>
+  
+      <div class="col-12 mt-2">
+         <button (click)="updatePersonnel()" class="btn btn-success">Modifier</button>
+      </div>
+
+      
+
+    </form>
+  </div>
+  

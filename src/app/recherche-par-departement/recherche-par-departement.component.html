@@ -1,0 +1,42 @@
+
+<div class="container">
+    <div class="content">
+      <div class="row mb-4">
+        <div class="col-lg-4">
+          <label><b>Departement :</b> </label>
+          <select class="form-control form-control-lg" id="idDep" name="idDep" [(ngModel)]="IdDepartement" 
+            (change)="onChange()"> 
+            <option *ngFor="let dep of departements" value="{{dep.idDep}}">{{dep.nomDep}}</option>
+          </select>
+        </div>
+  
+        
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">idPersonnel</th>
+            <th scope="col">Nom Personnel</th>
+            <th scope="col">Prenom Personnel</th>
+            <th scope="col">Date Naissance</th>
+            <th scope="col">Email</th>
+            <th scope="col">Numero Telephone</th>
+            <th scope="col">Adresse</th>
+            <th scope="col">Fonction</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let personnel of personnels">
+            <td>{{personnel.idPersonnel}}</td>
+            <td>{{personnel.nomPersonnel}}</td>
+            <td>{{personnel.prenomPersonnel}}</td>
+            <td>{{personnel.dateNaissance | date:'dd/MM/yyyy'}}</td>
+            <td>{{personnel.email}}</td>
+            <td>{{personnel.numTelephone}}</td>
+            <td>{{personnel.adresse}}</td>
+            <td>{{personnel.fonction}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

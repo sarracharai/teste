@@ -1,0 +1,76 @@
+/* Ajoutez ces styles dans votre fichier CSS existant ou créez un nouveau fichier CSS */
+
+/* Ajoutez cette ligne au début du fichier */
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+
+
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+app-sidebar {
+  width: auto;
+  float: left; /* Utilisez float pour positionner la barre latérale à gauche */
+  background-color: #333;
+  color: #fff;
+  padding: 40px;
+  box-sizing: border-box;
+}
+
+.container {
+  margin-left: 180px; /* Ajustez la marge en fonction de la largeur de votre barre latérale */
+}
+
+.content {
+  margin-left: 40px; /* Ajoutez une marge à gauche pour laisser de l'espace à la barre latérale */
+  padding: 40px;
+  box-sizing: border-box;
+}
+
+.table {
+  width: 70%;
+}
+
+
+.table th {
+  background-color: #f2f2f2;
+}
+
+/* Add the following styles to your existing CSS */
+
+.search-container {
+  display: flex;
+  align-items: center;
+}
+
+.search-icon {
+  font-size: 1.5rem;
+  color: #777;
+  margin-right: 5px;
+}
+
+.form-control {
+  width: 250px; /* Adjust the width as needed */
+}
+
+/* Responsive styling for smaller screens */
+@media (max-width: 576px) {
+  .form-control {
+    width: 100%;
+  }
+}
+
+
+.navbar.navbar-expand-lg {
+  margin-bottom: 10px; /* Adjust the margin as needed */
+}
+
+.form-inline {
+  margin-top: 40px; /* Adjust the margin as needed */
+}
+
+app-sidebar {
+  margin-right: 45px; /* Adjust the margin as needed */
+}

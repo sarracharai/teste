@@ -1,0 +1,56 @@
+<div class="container">
+    <div>
+      <h2>Ajouter un Personnel :</h2>
+    </div>
+    <form class="row">
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label for="idPersonnel" class="form-label">Id Personnel :</label>
+          <input type="text" [(ngModel)]="newPersonnel.idPersonnel" name="idPersonnel" class="form-control" placeholder="Entrez l'ID" required>
+        </div>
+        <div class="mb-3">
+          <label for="nomPersonnel" class="form-label">Nom Personnel :</label>
+          <input type="text" [(ngModel)]="newPersonnel.nomPersonnel" name="nomPersonnel" class="form-control" placeholder="Entrez Le Nom Personnel" required>
+        </div>
+        <div class="mb-3">
+          <label for="prenomPersonnel" class="form-label">Prenom Personnel :</label>
+          <input type="text" [(ngModel)]="newPersonnel.prenomPersonnel" name="prenomPersonnel" class="form-control" placeholder="Entrez Le Prenom Personnel" required>
+        </div>
+        <div class="mb-3">
+          <label for="dateNaissance" class="form-label">Date Naissance :</label>
+          <input type="date" [(ngModel)]="newPersonnel.dateNaissance" name="dateNaissance" class="form-control" >
+        </div>
+        <div class="mb-3">
+          <label for="idDep" class="form-label">Département :</label>
+          <select class="form-control" id="idDep" name="idDep" [(ngModel)]="newIdDep" >
+            <option *ngFor="let dep of departements" [value]="dep.idDep">{{dep.nomDep}} </option>
+          </select>
+        </div>
+      </div>
+  
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label for="email" class="form-label">Email :</label>
+          <input type="text" [(ngModel)]="newPersonnel.email" name="email" class="form-control" placeholder="Entrez Le Email d'un Personnel" required>
+        </div>
+        <div class="mb-3">
+          <label for="numTelephone" class="form-label">Numero Telephone :</label>
+          <input type="text" [(ngModel)]="newPersonnel.numTelephone" name="numTelephone" class="form-control" placeholder="Entrez Le Telephone d'un Personnel" required>
+        </div>
+        <div class="mb-3">
+          <label for="adresse" class="form-label">Adresse :</label>
+          <input type="text" [(ngModel)]="newPersonnel.adresse" name="adresse" class="form-control" placeholder="Entrez L'Adresse d'un Personnel" required>
+        </div>
+        <div class="mb-3">
+          <label for="fonction" class="form-label">Fonction :</label>
+          <input type="text" [(ngModel)]="newPersonnel.fonction" name="fonction" class="form-control" placeholder="Entrez La Fonction d'un Personnel" required>
+        </div>
+        
+      </div>
+  
+      <div class="col-md-12 mt-4">
+        <button type="submit" (click)="addPersonnel()" class="btn btn-success mb-2">Ajouter</button>
+      </div>
+    </form>
+  </div>
+  

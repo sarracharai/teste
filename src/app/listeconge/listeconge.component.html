@@ -1,0 +1,45 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.19.0/font/bootstrap-icons.css" rel="stylesheet">
+<div class="container">
+    <app-add-conge></app-add-conge>
+    <div class="card shadow mb-4">
+      <div class="card-body">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Type Conge</th>
+              <th>Date Debut</th>
+              <th>Date Fin</th>
+              <th>Justification Conge</th>
+              <th>Date Demande</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let conge of conges">
+              <td>{{ conge.idConge }}</td>
+              <td>{{ conge.typeConge }}</td>
+              <td>{{ conge.dateDebut | date:'dd/MM/yyyy'}}</td>
+              <td>{{ conge.dateFin | date:'dd/MM/yyyy' }}</td>
+              <td>{{ conge.justifConge }}</td>
+              <td>{{ conge.dateDemande | date:'dd/MM/yyyy'}}</td>
+              <td>
+                <button class="btn btn-primary" (click)="modifierConge(conge.idConge)">
+                  <i class="bi bi-pencil-square"></i>
+              
+                </button>
+              </td>
+  
+              <td>
+                <button class="btn btn-danger"
+                (click)="supprimerConge(conge)">
+                <i class="bi bi-trash"></i>
+                </button>
+              </td> 
+
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  

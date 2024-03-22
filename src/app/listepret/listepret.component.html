@@ -1,0 +1,40 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.19.0/font/bootstrap-icons.css" rel="stylesheet">
+<div class="container">
+    <app-add-pret></app-add-pret>
+    <div class="card shadow mb-4">
+      <div class="card-body">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Statut Pret</th>
+              <th>Montant</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let pret of prets">
+              <td>{{ pret.idPret }}</td>
+              <td>{{ pret.statutPret }}</td>
+              <td>{{ pret.montant }}</td>
+              
+              <td>
+                <button class="btn btn-primary" (click)="modifierPret(pret.idPret)">
+                  <i class="bi bi-pencil-square"></i>
+              
+                </button>
+              </td>
+  
+              <td>
+                <button class="btn btn-danger"
+                (click)="supprimerConge(pret)">
+                <i class="bi bi-trash"></i>
+                </button>
+              </td> 
+
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  
