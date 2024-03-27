@@ -1,0 +1,25 @@
+<div class="container">
+    <div>
+        <h2>Ajouter un Assiduite :</h2>
+    </div>
+    <form>
+        <div hidden class="col-sm-2 col-md-2 col-lg-2">
+            <label>ID </label>
+            <input type="text" [(ngModel)]="newDocument.idDocument" name="idDocument" class="form-control">
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label>type</label>
+            <input type="text" [(ngModel)]="newDocument.type" name="type" class="form-control">
+        </div>
+        <div class="col-sm-2 col-md-2 col-lg-2">
+            <label>date</label>
+            <input type="date" [(ngModel)]="newDocument.dateCreation" name="dateCreation" class="form-control">
+        </div>
+   
+         
+        <div class="mt-2">
+            
+            <button type="submit"  (click)="addDocument()"class="btn btn-success">ajouter</button>
+        </div>
+    </form>
+</div>

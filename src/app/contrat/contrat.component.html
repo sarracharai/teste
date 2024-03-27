@@ -1,0 +1,38 @@
+
+<div class="container">
+    <div class="my-4">
+        <h2>Liste des contrats</h2>
+        <button type="button" class="btn btn-primary" routerLink="/addContrat">Ajouter un contrat</button>
+    </div>
+    <div class="card shadow">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Type</th>
+                            <th scope="col">Date d'embauche</th>
+                            <th scope="col">Date de signature</th>
+                            <th scope="col">Nom de la société</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let c of contrats">
+                            <td>{{ c.idContrat }}</td>
+                            <td>{{ c.type }}</td>
+                            <td>{{ c.dateEmbauche }}</td>
+                            <td>{{ c.dateSignature }}</td>
+                            <td>{{ c.nomSociete }}</td>
+                            <td>
+                                <button type="button" class="btn btn-danger" (click)="supprimerContrat(c)">Supprimer</button>
+                                <a class="btn btn-warning" [routerLink]="['/updateContrat', c.idContrat]">Modifier</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

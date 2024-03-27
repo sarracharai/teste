@@ -1,0 +1,39 @@
+<div class="container">
+    <div>
+        <h2>Ajouter un Assiduite :</h2>
+    </div>
+    <form>
+        <div hidden class="col-sm-2 col-md-2 col-lg-2">
+            <label>ID </label>
+            <input type="text" [(ngModel)]="newAbsence.idAbs" name="idAbs" class="form-control">
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label>heures Abs</label>
+            <input type="number" [(ngModel)]="newAbsence.heuresAbs" name="heuresAbs" class="form-control">
+        </div>
+        <div class="col-sm-2 col-md-2 col-lg-2">
+            <label>type</label>
+            <input type="text" [(ngModel)]="newAbsence.typeAbs" name="typeAbs" class="form-control">
+        </div>
+
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label>statut</label>
+            <input type="text" [(ngModel)]="newAbsence.statut" name="statut" class="form-control">
+        </div>
+    
+
+    <div class="col-sm-4 col-md-4 col-lg-4">
+       <label>idAssiduites</label>
+       <select class="form-control form-control-lg" id="idAbs" name="idAbs" [(ngModel)]="newIdAssiduite">
+           <option *ngFor="let ab of assiduites" [value]="ab.idAssiduite">
+               {{ab.idAssiduite}}
+           </option>
+       </select>
+   </div>
+         
+        <div class="mt-2">
+            
+            <button type="submit"  (click)="addAbsence()"class="btn btn-success">ajouter</button>
+        </div>
+    </form>
+</div>

@@ -6,6 +6,10 @@ import { Observable } from 'rxjs';
 import { Conge } from '../model/conge.model';
 import { DepartementWrapper } from '../model/departementWrapped.model';
 import { Pret } from '../model/pret.model';
+import { Assiduite } from '../model/assiduite.model';
+import { Absence } from '../model/absence.model';
+import { Contrat } from '../model/contrat.model';
+import { Document } from '../model/docAdministratifs.model';
 
 
 
@@ -21,15 +25,75 @@ export class PersonnelService {
   baseUrl="http://localhost:8083/ressourcesH/api";
   apiURL="http://localhost:8083/ressourcesH/dep";
   apiURLCong="http://localhost:8083/ressourcesH/api/conge";
-  apiURLP="http://localhost:8083/ressourcesH/api/pret"
+  apiURLP="http://localhost:8083/ressourcesH/api/pret";
+  apiURLAb="http://localhost:8083/ressourcesH/api/abs";
+  apiURLDoc="http://localhost:8083/ressourcesH/api/documents";
+  apiURLCon="http://localhost:8083/ressourcesH/api/contrat";
+  apiURLAss="http://localhost:8083/ressourcesH/api"
+  
 
 
-  personnels! : Personnel[];  //un tableau de Personnel
+
+
+  assiduites!: Assiduite[]; //un tableau de Assiduite
+    absences!:Absence[]; //un tableau d'absence'
+    documents!:Document[] //un tableau de document
+    personnels! : Personnel[];  //un tableau de Personnel
   
 
   constructor(private http : HttpClient) { 
 
   }
+
+
+  //assiduite
+
+  listeAssiduite(): Observable<Assiduite[]> {
+    return this.http.get<Assiduite[]>(this.apiURLAss+"/all");
+  }
+  
+  ajouterAssiduite( as: Assiduite):Observable<Assiduite>{
+    return this.http.post<Assiduite>(this.apiURLAss +"/addass", as, httpOptions);
+    }
+
+    supprimerAssiduite(id : number) {
+      const url = `${this.apiURLAss}/delass/${id}`;
+      return this.http.delete(url, httpOptions);
+      }
+
+    updateAssiduite(as :Assiduite) : Observable<Assiduite>
+    {
+        return this.http.put<Assiduite>(this.apiURLAss+"/updateass", as, httpOptions);
+    }
+
+    //////////////////
+
+    consulterAssiduite(id: number): Observable<Assiduite> {
+        const url = `${this.apiURLAss}/getbyid/${id}`;
+        return this.http.get<Assiduite>(url);
+        }
+
+  listeAbsences():Observable< Absence[]>{
+    return this.http.get<Absence[]>(this.apiURLAb);
+    }
+  ajouterAbsence(ab: Absence): Observable<Absence> {
+       return this.http.post<Absence>(this.apiURLAb+"/addab",ab, httpOptions);
+     }
+     consulterAbsence(id: number): Observable<Absence> {
+      const url = `${this.apiURLAb}/getbyid/${id}`;
+      return this.http.get<Absence>(url);
+      }
+     supprimerAbsence(id : number) {
+                const url = `${this.apiURLAb}/delab/${id}`;
+                return this.http.delete(url, httpOptions);
+                }   
+                
+     updateAbsence(as :Absence) : Observable<Absence>  {
+         return this.http.put<Absence>(this.apiURLAb+"/updateab", as, httpOptions);
+                }  
+
+                //////////////////////
+
 
   listePersonnels():Observable<Personnel[]> {
     return this.http.get<Personnel[]>(this.baseUrl); 
@@ -134,5 +198,70 @@ export class PersonnelService {
       }
 
 
-}
+
+
+      
+    
+    /*
+              listeAbsences():Observable<AbsenceWrapper>{
+                return this.http.get<AbsenceWrapper>(this.apiURLAb);
+                }
+    */
+                
+       /////////////   les meth de Documents  /////////////////////
+      
+       listeDocument(): Observable<Document[]> {
+        return this.http.get<Document[]>(this.apiURLDoc+"/all");
+      }
+      
+      ajouterDocument( doc: Document):Observable<Document>{
+        return this.http.post<Document>(this.apiURLDoc +"/add", doc, httpOptions);
+        }
+
+
+       
+    
+        supprimerDocument(id : number) {
+          const url = `${this.apiURLDoc}/delete/${id}`;
+          return this.http.delete(url, httpOptions);
+          }
+    
+        updateDocument(doc :Document) : Observable<Document>
+        {
+            return this.http.put<Document>(this.apiURLDoc+"/updatedoc", doc, httpOptions);
+        }
+    
+        consulterDocument(id: number): Observable<Document> {
+            const url = `${this.apiURLDoc}/getbyid/${id}`;
+            return this.http.get<Document>(url);
+            }
+    /////////////////////////////////////////////////////////////////
+      
+    listeContrat(): Observable<Contrat[]> {
+      return this.http.get<Contrat[]>(this.apiURLCon+"/all");
+    }
+    
+    ajouterContrat( as: Contrat):Observable<Contrat>{
+      return this.http.post<Contrat>(this.apiURLCon +"/add", as, httpOptions);
+      }
+    
+      supprimerContrat(id : number) {
+        const url = `${this.apiURLCon}/delete/${id}`;
+        return this.http.delete(url, httpOptions);
+        }
+    
+      updateContrat(doc :Contrat) : Observable<Contrat>
+      {
+          return this.http.put<Contrat>(this.apiURLCon+"/update", doc, httpOptions);
+      }
+    
+      consulterContrat(id: number): Observable<Contrat> {
+          const url = `${this.apiURLCon}/${id}`;
+          return this.http.get<Contrat>(url);
+          }
+    
+      
+      }
+
+
 

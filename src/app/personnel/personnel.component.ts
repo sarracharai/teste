@@ -42,7 +42,7 @@ export class PersonnelComponent implements OnInit {
   supprimerPersonnel(p: Personnel) { 
     let conf = confirm("Etes-vous sûr ?");
     if (conf) this.personnelService.supprimerPersonnel(p.idPersonnel).subscribe(() => {
-      console.log("reclamation supprimé"); this.chargerPersonnels(); }); 
+      console.log("personnel supprimé"); this.chargerPersonnels(); }); 
     }
 
 

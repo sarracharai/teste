@@ -1,0 +1,39 @@
+
+<div class="container">
+    <div>
+        <h2>Modifier mon assiduité:</h2>
+    </div>
+    <form>
+        <div  class="col-sm-2 col-md-2 col-lg-2">
+            <label>ID </label>
+            <input readonly type="text" [(ngModel)]="currentAbsence.idAbs" name="idAbs" class="form-control">
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label>heures Abs</label>
+            <input type="number" [(ngModel)]="currentAbsence.heuresAbs" name="heuresAbs" class="form-control">
+        </div>
+        <div class="col-sm-2 col-md-2 col-lg-2">
+            <label>type Abs</label>
+            <input type="text" [(ngModel)]="currentAbsence.typeAbs" name="typeAbs" class="form-control">
+        </div>
+
+        <div class="col-sm-2 col-md-2 col-lg-2">
+            <label>statut</label>
+            <input type="text" [(ngModel)]="currentAbsence.statut" name="statut" class="form-control">
+        </div>
+       
+
+         <div class="col-sm-4 col-md-4 col-lg-4">
+            <label>Id assiduite</label>
+            <select class="form-control form-control-lg" id="idAbs" name="idAbs" [(ngModel)]="updatedAsId">
+                <option *ngFor="let ab of assiduites" [value]="ab.idAssiduite">
+                    {{ab.idAssiduite}}
+                </option>  
+            </select>
+        </div> 
+
+        <div class="mt-2">
+            <button type="submit" (click)="updateAbsence()" class="btn btn-success">Modifer</button>
+        </div>
+    </form>
+</div>

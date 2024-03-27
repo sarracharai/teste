@@ -1,0 +1,34 @@
+
+<div class="container">
+    <div>
+        <h2>Ajouter un contrat :</h2>
+    </div>
+    <form>
+        <div hidden class="col-sm-2 col-md-2 col-lg-2">
+            <label>ID </label>
+            <input type="text" [(ngModel)]="newContrat.idContrat" name="idContrat" class="form-control">
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label>type</label>
+            <input type="text" [(ngModel)]="newContrat.type" name="type" class="form-control">
+        </div>
+        <div class="col-sm-2 col-md-2 col-lg-2">
+            <label>date</label>
+            <input type="date" [(ngModel)]="newContrat.dateEmbauche" name="dateEmbauche" class="form-control">
+        </div>
+        <div class="col-sm-2 col-md-2 col-lg-2">
+            <label>date</label>
+            <input type="date" [(ngModel)]="newContrat.dateSignature" name="dateSignature" class="form-control">
+        </div>
+
+        <div class="col-sm-2 col-md-2 col-lg-2">
+            <label>nom du société</label>
+            <input type="text" [(ngModel)]="newContrat.nomSociete" name="nomSociete" class="form-control">
+        </div>
+   
+        <div class="mt-2">
+            
+            <button type="submit"  (click)="addContrat()"class="btn btn-success">ajouter</button>
+        </div>
+    </form>
+</div>

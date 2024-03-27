@@ -15,6 +15,19 @@ import { ListepretComponent } from './listepret/listepret.component';
 import { AddPretComponent } from './add-pret/add-pret.component';
 import { UpdatePretComponent } from './update-pret/update-pret.component';
 
+import { AssiduitesComponent } from './assiduites/assiduites.component';
+import { UpdateAssiduiteComponent } from './update-assiduite/update-assiduite.component';
+import { AddAssiduiteComponent } from './add-assiduite/add-assiduite.component';
+import { ListeAbsencesComponent } from './liste-absences/liste-absences.component';
+import { UpdateAbsenceComponent } from './update-absence/update-absence.component';
+import { DocumentsComponent } from './documents/documents.component';
+import { AddDocumentComponent } from './add-document/add-document.component';
+import { UpdateDocumentComponent } from './update-document/update-document.component';
+import { ContratComponent } from './contrat/contrat.component';
+import { AddContratComponent } from './add-contrat/add-contrat.component';
+import { UpdateContratComponent } from './update-contrat/update-contrat.component';
+import { AddAbsenceComponent } from './add-absence/add-absence.component';
+
 const routes: Routes = [
 
   {path: "personnel", component : PersonnelComponent },
@@ -34,6 +47,22 @@ const routes: Routes = [
   {path: "listePret", component: ListepretComponent},
   {path: "addPret", component: AddPretComponent},
   {path: "updatePret/:idPret", component: UpdatePretComponent},
+
+
+  {path: "assiduites", component : AssiduitesComponent},
+  {path: "addAssiduite", component : AddAssiduiteComponent},
+  {path: "updateAssiduite/:id", component :UpdateAssiduiteComponent},
+  {path: "listeAbsences", component :ListeAbsencesComponent},
+  {path: "updateAbsence", component :UpdateAbsenceComponent},
+  {path: "documents", component :DocumentsComponent},
+  {path: "addDocument", component : AddDocumentComponent},
+  {path: "updateDocument/:id", component :UpdateDocumentComponent},
+  {path: "contrats", component :ContratComponent},
+  {path: "addContrat", component : AddContratComponent},
+  {path: "updateContrat/:id", component :UpdateContratComponent},
+  {path: "addAbsence", component: AddAbsenceComponent},
+  {path: "updateAbsence/:id", component :UpdateAbsenceComponent},
+
 ];
 
 @NgModule({

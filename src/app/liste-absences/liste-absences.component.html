@@ -1,0 +1,41 @@
+
+<div class="container">
+    <div class="mb-4">
+        <h2>Liste des absences</h2>
+        <button type="button" class="btn btn-primary" routerLink="/addAbsence">Ajouter un Absence</button>
+       
+    </div>
+    <div class="card shadow">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">heuresAbs</th>
+                            <th scope="col">type</th>
+                            <th scope="col">statut</th>
+                            <th scope="col">idAssiduite</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let a of absences">
+                            <td>{{ a.idAbs }}</td>
+                            <td>{{ a.heuresAbs }}</td>
+                            <td>{{ a.typeAbs }}</td>
+                            <td>{{ a.statut }}</td>
+                            <td>{{ a.assiduite?.idAssiduite }}</td>
+                            <td>
+                            <button type="button" class="btn btn-danger" (click)="supprimerAbsence(a)">Supprimer</button>
+                         
+                            <a class="btn btn-warning" [routerLink]="['/updateAbsence',a.idAbs]">Modifier</a>
+                          </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+  </div>
+  
