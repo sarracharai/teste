@@ -79,22 +79,35 @@
   </div>
   <section class="home-section">
     <div class="text">Dashboard</div>
+
     <div class="card-container">
       <div class="card-group">
-      <div class="card">
-        <img src="/assets/adminstration.png" alt="adminstration">
+
+        <a routerLink="/personnel" target="_blank">
+          <div class="card">
+            <img src="/assets/personnel.png" alt="personnel">
+            <div class="card-body">
+              <h3>Personnel</h3>
+              <p></p>
+            </div>
+          </div>
+          </a>
+
+        <a routerLink="/assiduites" target="_blank">
+      <div class="card"  >
+        <img src="/assets/adminstration.png" alt="assiduite">
         <div class="card-body">
-          <h4>Adminstration</h4>
+          <h4>Assiduite</h4>
           <p></p>
         </div>
-      </div>
-      <div class="card">
-        <img src="/assets/personnel.png" alt="personnel">
-        <div class="card-body">
-          <h3>Personnel</h3>
-          <p></p>
-        </div>
-      </div>
+    </div>
+  </a>
+
+
+ 
+
+
+  <a routerLink="/listeDep" target="_blank">
       <div class="card">
         <img src="/assets/departement.png" alt="departement">
         <div class="card-body">
@@ -102,6 +115,10 @@
           <p></p>
         </div>
       </div>
+    </a>
+
+
+  <a routerLink="/listeAbsences" target="_blank">
       <div class="card">
         <img src="/assets/absence.png" alt="absence">
         <div class="card-body">
@@ -109,8 +126,12 @@
           <p></p>
         </div>
       </div>
+  </a>
+
     </div>
-    <div class="card-group">
+  
+  <div class="card-group">
+  <a routerLink="/listeConge" target="_blank">
       <div class="card">
         <img src="/assets/congé.png" alt="conge">
         <div class="card-body">
@@ -118,6 +139,10 @@
           <p></p>
         </div>
       </div>
+    </a>
+    
+  
+    <a routerLink="/contrats" target="_blank">
       <div class="card">
         <img src="/assets/contrat.png" alt="contrat">
         <div class="card-body">
@@ -125,6 +150,10 @@
           <p></p>
         </div>
       </div>
+      </a>
+
+
+    <a routerLink="/listePret" target="_blank">
       <div class="card">
         <img src="/assets/pret.png" alt="pret">
         <div class="card-body">
@@ -132,6 +161,10 @@
           <p></p>
         </div>
       </div>
+      </a>
+
+
+    <a routerLink="/documents" target="_blank">
       <div class="card">
         <img src="/assets/documentadministratif.png" alt="documentation">
         <div class="card-body">
@@ -139,6 +172,9 @@
           <p></p>
         </div>
       </div>
+    </a>
+
+
     </div>
     </div>
   </section>

@@ -11,8 +11,17 @@ export class ListeDepartementsComponent implements OnInit{
 
   departements! : Departement[];
 
+  allDepartements! : Departement[];
+  searchTerm!: string;
+
   constructor(private personnelService : PersonnelService){}
 
+
+
+  onKeyUp(filterText : string){ ////onkeyup
+    this.departements = this.allDepartements.filter(item => 
+     item.nomDep.toLowerCase().includes(filterText));
+    }
 
   ngOnInit(): void {
     this.personnelService.listeDepartements().

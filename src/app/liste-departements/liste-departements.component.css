@@ -1,30 +1,80 @@
+/* Import des bibliothèques externes */
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+
+/* Réinitialisation des styles et styles généraux */
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+/* Styles spécifiques aux cartes */
 .card {
-    margin: 20px 0; /* Adjust margin as needed */
-    
+  margin: 20px 0;
+}
+
+/* Styles spécifiques aux conteneurs */
+.container {
+  margin-left: 180px; /* Ajuster la marge en fonction de la largeur de votre barre latérale */
+}
+
+/* Styles spécifiques à la table */
+.table {
+  width: 80%;
+  border-collapse: collapse; /* Fusionner les bordures des cellules */
+  font-size: 14px;
+}
+
+/* Styles spécifiques aux en-têtes de table */
+.table th {
+  background-color: #f2f2f2;
+  padding: 8px;
+  text-align: center;
+  border-bottom: 1px solid #ddd; /* Ajouter une bordure en bas */
+}
+
+/* Styles spécifiques aux cellules de table */
+.table td {
+  padding: 8px;
+  text-align: center;
+  border-bottom: 1px solid #ddd; /* Ajouter une bordure en bas */
+}
+
+/* Effet de survol des lignes de table */
+.table tbody tr:hover {
+  background-color: #f0f0f0;
+}
+
+/* Styles spécifiques à la barre de navigation */
+.navbar.navbar-expand-lg {
+  margin-bottom: 10px;
+}
+
+/* Styles spécifiques au formulaire en ligne */
+.form-inline {
+  margin-top: 40px;
+}
+
+/* Styles spécifiques à la barre de recherche */
+.search-container {
+  display: flex;
+  align-items: center;
+}
+
+.search-icon {
+  font-size: 1.5rem;
+  color: #777;
+  margin-right: 5px;
+}
+
+.form-control {
+  width: 250px; /* Adjust the width as needed */
+}
+
+
+/* Responsive : ajustement de la largeur du champ de formulaire pour les petits écrans */
+@media (max-width: 576px) {
+  .form-control {
+    width: 100%;
   }
-  
-  .table {
-    width: 100%; /* Set a fixed width for the table */
-    font-size: 14px; /* Adjust font size as needed */
-    margin-bottom: 0; /* Remove default table margin */
-  }
-  
-  .card-body {
-    padding: 10px; /* Adjust padding as needed */
-  }
-  
-  .table th,
-  .table td {
-    text-align: center;
-    padding: 8px; /* Adjust cell padding as needed */
-  }
-  
-  /* Optional: Add some additional styling to the table rows */
-  .table tbody tr {
-    transition: background-color 0.3s ease;
-  }
-  
-  .table tbody tr:hover {
-    background-color: #f0f0f0; /* Change the color on hover as desired */
-  }
-  
+}

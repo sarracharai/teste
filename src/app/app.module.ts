@@ -31,6 +31,9 @@ import { UpdateAssiduiteComponent } from './update-assiduite/update-assiduite.co
 import { UpdateContratComponent } from './update-contrat/update-contrat.component';
 import { UpdateDocumentComponent } from './update-document/update-document.component';
 import { AddAbsenceComponent } from './add-absence/add-absence.component';
+import { LoginComponent } from './login/login.component';
+import { ForbiddenComponent } from './forbidden/forbidden.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +64,10 @@ import { AddAbsenceComponent } from './add-absence/add-absence.component';
     UpdateAssiduiteComponent,
     UpdateContratComponent,
     UpdateDocumentComponent,
-    AddAbsenceComponent
+    AddAbsenceComponent,
+    LoginComponent,
+    ForbiddenComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

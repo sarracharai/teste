@@ -27,11 +27,15 @@ import { ContratComponent } from './contrat/contrat.component';
 import { AddContratComponent } from './add-contrat/add-contrat.component';
 import { UpdateContratComponent } from './update-contrat/update-contrat.component';
 import { AddAbsenceComponent } from './add-absence/add-absence.component';
+import { LoginComponent } from './login/login.component';
+import { ForbiddenComponent } from './forbidden/forbidden.component';
+import { PersonnelGuard } from './guard/personnel.guard';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 const routes: Routes = [
 
   {path: "personnel", component : PersonnelComponent },
-  {path: "addPersonnel", component : AddPersonnelComponent },
+  {path: "addPersonnel", component : AddPersonnelComponent, canActivate:[PersonnelGuard] },
   {path: "updatePersonnel/:idPersonnel", component : UpdatePersonnelComponent },
   {path: "profil/:idPersonnel", component: ProfilPersonnelComponent },
   {path: "profil", component: ProfilPersonnelComponent },
@@ -47,6 +51,10 @@ const routes: Routes = [
   {path: "listePret", component: ListepretComponent},
   {path: "addPret", component: AddPretComponent},
   {path: "updatePret/:idPret", component: UpdatePretComponent},
+  {path: "sidebar", component: SidebarComponent},
+  {path: "departement", component: AddDepartementComponent},
+  
+
 
 
   {path: "assiduites", component : AssiduitesComponent},
@@ -61,7 +69,12 @@ const routes: Routes = [
   {path: "addContrat", component : AddContratComponent},
   {path: "updateContrat/:id", component :UpdateContratComponent},
   {path: "addAbsence", component: AddAbsenceComponent},
+  {path: "addConge", component: AddCongeComponent},
+
   {path: "updateAbsence/:id", component :UpdateAbsenceComponent},
+  {path: 'login', component: LoginComponent},
+  {path: 'app-forbidden', component: ForbiddenComponent},
+  {path: "", redirectTo: "sidebar", pathMatch: "full" }
 
 ];
 

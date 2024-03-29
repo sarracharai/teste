@@ -1,27 +1,22 @@
-import { Router } from '@angular/router';
-import { AuthService } from './services/auth.service';
 import { Component, OnInit } from '@angular/core';
-
+import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-navbar',
+  templateUrl: './navbar.component.html',
+  styleUrls: ['./navbar.component.css']
 })
-export class AppComponent  implements OnInit{
-  title = 'RHApp';
-  
-
+export class NavbarComponent implements OnInit{
   constructor(public authService : AuthService ,private router:Router){}
 
   onLogout(){
     this.authService.logout();
   }
 
-  
 
-  ngOnInit () { 
-   
+  ngOnInit(): void {
+
     let isloggedin: string;
     let loggedUser:string;
     
@@ -32,6 +27,7 @@ export class AppComponent  implements OnInit{
       else
        this.authService.setLoggedUserFromLocalStorage(loggedUser);
      }
-
+    
+  
 
 }
