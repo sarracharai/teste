@@ -34,6 +34,7 @@ import { AddAbsenceComponent } from './add-absence/add-absence.component';
 import { LoginComponent } from './login/login.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { UpdateDepartementComponent } from './update-departement/update-departement.component';
 
 @NgModule({
   declarations: [
@@ -67,7 +68,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     AddAbsenceComponent,
     LoginComponent,
     ForbiddenComponent,
-    NavbarComponent
+    NavbarComponent,
+    UpdateDepartementComponent
   ],
   imports: [
     BrowserModule,

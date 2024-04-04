@@ -10,9 +10,7 @@ import { PersonnelService } from '../services/personnel.service';
 })
 export class ContratComponent implements OnInit {
   
-addContrat(arg0: any) {
-throw new Error('Method not implemented.');
-}
+
  contrats? : Contrat[] ;
 
   constructor( private personnelService: PersonnelService ,private router: Router ) {

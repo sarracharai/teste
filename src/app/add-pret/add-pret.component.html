@@ -1,13 +1,18 @@
+<div class="container">
+    <div>
+      <h2>Ajouter un Pret :</h2>
+    </div>
+ 
 <form>
 
-    <div [hidden] >
-        <label for="idPret" class="form-label">id Conge</label> 
-        <input [(ngModel)]="newPret.idPret" name="idPret"
+    <div hidden >
+        <label for="idPret" class="form-label">id Pret</label> 
+        <input  [(ngModel)]="newPret.idPret" name="idPret"
             class="form-control w-25">
     </div>
 
     <div>
-    <label for="statutPret" class="form-label" >type Conge</label> 
+    <label for="statutPret" class="form-label" >type Pret</label> 
     <input type="text" [(ngModel)]="newPret.statutPret" name="statutPret"
         class="form-control" placeholder="Entrez un type...">
     </div>

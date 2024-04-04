@@ -1,0 +1,38 @@
+
+<div class="container">
+    <div>
+      <h2>Modifier Departement :</h2>
+    </div>
+    <form (ngSubmit)="updateDepartement()" class="row g-3">
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label for="idDep" class="form-label">Id Departement:</label>
+          <input  readonly type="text" [(ngModel)]="currentDep.idDep" id="idDep" name="idDep"
+            class="form-control" [readonly]="true">
+        </div>
+  
+        <div class="mb-3">
+          <label for="nomDep" class="form-label">Nom Departement:</label>
+          <input type="text" [(ngModel)]="currentDep.nomDep" id="nomDep" name="nomDep"
+            class="form-control">
+        </div>
+
+        
+  
+       
+  
+   
+  
+      
+         
+      </div>
+  
+      <div class="col-12 mt-2">
+         <button (click)="updateDepartement()" class="btn btn-success">Modifier</button>
+      </div>
+
+      
+
+    </form>
+  </div>
+  

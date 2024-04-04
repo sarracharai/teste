@@ -29,13 +29,14 @@ import { UpdateContratComponent } from './update-contrat/update-contrat.componen
 import { AddAbsenceComponent } from './add-absence/add-absence.component';
 import { LoginComponent } from './login/login.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
-import { PersonnelGuard } from './guard/personnel.guard';
+//import { PersonnelGuard } from './guard/personnel.guard';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { UpdateDepartementComponent } from './update-departement/update-departement.component';
 
 const routes: Routes = [
 
   {path: "personnel", component : PersonnelComponent },
-  {path: "addPersonnel", component : AddPersonnelComponent, canActivate:[PersonnelGuard] },
+  {path: "addPersonnel", component : AddPersonnelComponent /*, canActivate:[PersonnelGuard] */ },
   {path: "updatePersonnel/:idPersonnel", component : UpdatePersonnelComponent },
   {path: "profil/:idPersonnel", component: ProfilPersonnelComponent },
   {path: "profil", component: ProfilPersonnelComponent },
@@ -47,6 +48,7 @@ const routes: Routes = [
   {path: "listeConge/:idConge", component: ListecongeComponent},
   {path: "addConge", component: AddCongeComponent},
   {path: "updateConge/:idConge", component: UpdateCongeComponent},
+  {path: "updateDepartement/:idDep", component: UpdateDepartementComponent},
   {path: "listePret/:idPret", component: ListepretComponent},
   {path: "listePret", component: ListepretComponent},
   {path: "addPret", component: AddPretComponent},
