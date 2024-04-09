@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Document } from '../model/docAdministratifs.model';
 import { PersonnelService } from '../services/personnel.service';
+import { AuthService } from '../services/auth.service';
 
 
 @Component({
@@ -12,7 +13,8 @@ import { PersonnelService } from '../services/personnel.service';
 })
 export class DocumentsComponent  implements OnInit {
   documents? : Document[] ;
-  constructor( private personnelService: PersonnelService ,private router: Router ) {
+  constructor( private personnelService: PersonnelService ,private router: Router,
+    public authService: AuthService ) {
   
       }
 

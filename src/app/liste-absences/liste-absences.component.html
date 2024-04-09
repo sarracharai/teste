@@ -2,7 +2,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.19.0/font/bootstrap-icons.css" rel="stylesheet">
 <div class="container">
     <h2>Liste des absences</h2>
-    <a class="btn btn-success" routerLink="/addAbsence">
+    <a *ngIf="authService.isAdmin()" class="btn btn-success" routerLink="/addAbsence">
         <i class="bi bi-plus-circle"></i> Ajouter Absence
       </a> 
     <div class="card shadowmb-4">
@@ -27,9 +27,8 @@
                             <td>{{ a.statut }}</td>
                             <td>{{ a.assiduite?.idAssiduite }}</td>
                             <td>
-                            <button type="button" class="btn btn-danger" (click)="supprimerAbsence(a)">Supprimer</button>
-                         
-                            <a class="btn btn-warning" [routerLink]="['/updateAbsence',a.idAbs]">Modifier</a>
+                                <a *ngIf="authService.isAdmin()" class="btn btn-danger" (click)="supprimerAbsence(a)">Supprimer</a></td>
+                                <td><a *ngIf="authService.isAdmin()" class="btn btn-warning" [routerLink]="['/updateAbsence',a.idAbs]">Modifier</a>
                           </td>
                         </tr>
                     </tbody>

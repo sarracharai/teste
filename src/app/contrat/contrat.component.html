@@ -2,7 +2,7 @@
 <div class="container">
     <div class="my-4">
         <h2>Liste des contrats</h2>
-        <button type="button" class="btn btn-primary" routerLink="/addContrat">Ajouter un contrat</button>
+        <button type="button"   *ngIf="authService.isAdmin()" class="btn btn-primary" routerLink="/addContrat">Ajouter un contrat</button>
     </div>
     <div class="card shadow">
         <div class="card-body">
@@ -26,8 +26,8 @@
                             <td>{{ c.dateSignature }}</td>
                             <td>{{ c.nomSociete }}</td>
                             <td>
-                                <button type="button" class="btn btn-danger" (click)="supprimerContrat(c)">Supprimer</button>
-                                <a class="btn btn-warning" [routerLink]="['/updateContrat', c.idContrat]">Modifier</a>
+                                <button type="button"  *ngIf="authService.isAdmin()" class="btn btn-danger" (click)="supprimerContrat(c)">Supprimer</button>
+                                <a  *ngIf="authService.isAdmin()" class="btn btn-warning" [routerLink]="['/updateContrat', c.idContrat]">Modifier</a>
                             </td>
                         </tr>
                     </tbody>

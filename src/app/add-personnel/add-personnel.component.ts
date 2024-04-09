@@ -19,6 +19,7 @@ constructor(private personnelService : PersonnelService,
             private router:Router ){}
 
 
+
  addPersonnel() {
 //   //const selectedDepartement = this.departements?.find(dep => dep.idDep === this.newIdDep);
    this.newPersonnel.departement = this.departements.find(dep => dep.idDep == this.newIdDep)!;

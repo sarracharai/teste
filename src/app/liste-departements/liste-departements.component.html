@@ -5,7 +5,7 @@
     <form class="form-inline">
         <div class="form-group mx-sm-3 mb-2 mt-2 ">
             <label><b>Nom Departement en tapant</b></label>
-            <div class="search-container">
+            <div  class="search-container">
                 <i class="bi bi-search search-icon"></i>
              <input class="form-control" #searchTerm (keyup)="onKeyUp(searchTerm.value)">
             </div>
@@ -13,7 +13,7 @@
             </form>
     
        
-    <a class="btn btn-success" routerLink="/addDep">
+    <a  *ngIf="authService.isAdmin()" class="btn btn-success" routerLink="/addDep">
         <i class="bi bi-plus-circle"></i> Ajouter Departement
       </a> 
    
@@ -32,14 +32,14 @@
                        <td>{{dep.idDep}}</td>
                        <td>{{dep.nomDep}}</td>
                        <td>
-                        <button class="btn btn-primary" (click)="modifierDepartement(dep.idDep)">
+                        <button  *ngIf="authService.isAdmin()" class="btn btn-primary" (click)="modifierDepartement(dep.idDep)">
                           <i class="bi bi-pencil-square"></i>
                       
                         </button>
                       </td>
           
                       <td>
-                        <button class="btn btn-danger"
+                        <button class="btn btn-danger"  *ngIf="authService.isAdmin()"
                         (click)="supprimerDepartement(dep)">
                         <i class="bi bi-trash"></i>
                         </button>

@@ -8,26 +8,19 @@ import { Router } from '@angular/router';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit{
-  constructor(public authService : AuthService ,private router:Router){}
+  
+
+  constructor (public authService: AuthService,
+    private router:Router) {}
+
+  ngOnInit () { 
+    this.authService.loadToken();
+     if (this.authService.getToken()==null || this.authService.isTokenExpired()) this.router.navigate(['/login']); 
+    }
 
   onLogout(){
     this.authService.logout();
   }
-
-
-  ngOnInit(): void {
-
-    let isloggedin: string;
-    let loggedUser:string;
-    
-     isloggedin = localStorage.getItem('isloggedIn') || '';
-     loggedUser = localStorage.getItem('loggedUser') || '';
-     if (isloggedin!="true" || !loggedUser)
-       this.router.navigate(['/login']);
-      else
-       this.authService.setLoggedUserFromLocalStorage(loggedUser);
-     }
-    
   
 
 }

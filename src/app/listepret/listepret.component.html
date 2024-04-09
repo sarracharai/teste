@@ -2,7 +2,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.19.0/font/bootstrap-icons.css" rel="stylesheet">
 <div class="container">
   <h2>Liste Pret</h2>
-  <a class="btn btn-success" routerLink="/addPret">
+  <a   *ngIf="authService.isAdmin()" class="btn btn-success" routerLink="/addPret">
     <i class="bi bi-plus-circle"></i> Ajouter Absence
   </a> 
     <div class="card shadow mb-4">
@@ -22,14 +22,14 @@
               <td>{{ pret.montant }}</td>
               
               <td>
-                <button class="btn btn-primary" (click)="modifierPret(pret.idPret)">
+                <button *ngIf="authService.isAdmin()" class="btn btn-primary" (click)="modifierPret(pret.idPret)">
                   <i class="bi bi-pencil-square"></i>
               
                 </button>
               </td>
   
               <td>
-                <button class="btn btn-danger"
+                <button  *ngIf="authService.isAdmin()" class="btn btn-danger"
                 (click)="supprimerConge(pret)">
                 <i class="bi bi-trash"></i>
                 </button>

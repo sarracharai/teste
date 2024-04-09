@@ -15,16 +15,16 @@
     </ul>
 </div>
 <div>
-    <ul class="nav navbar-nav navbar-right">
-        <li *ngIf="authService.isloggedIn">
-            <a href="#" (click)="onLogout()"><span class="glyphicon glyphicon-log-in"></span> Logout</a>
-        </li>
-        <li *ngIf="!authService.isloggedIn">
-            <a href="#" routerLink="login"><span class="glyphicon glyphicon-log-in"></span> Login</a>
-        </li>
-    </ul>
-  </div>
+  <ul class="nav navbar-nav navbar-right">
+      <li>
+          <a class="nav-link">{{authService.loggedUser}}</a>
+          <a *ngIf="!authService.isloggedIn" href="#" (click)="onLogout()" class="nav-link"><span class="glyphicon glyphicon-log-in"></span> Logout</a>
+          <a *ngIf="!authService.isloggedIn" href="#" routerLink="/login" class="nav-link"><span class="glyphicon glyphicon-log-in"></span> Login</a>
+      </li>
+  </ul>
 </div>
+</div>
+
 </nav>
 </body>
 </html>

@@ -11,7 +11,7 @@
     </div>
   </form>
 
-  <a class="btn btn-success" routerLink="/addPersonnel">
+  <a  *ngIf="authService.isAdmin()" class="btn btn-success" routerLink="/addPersonnel">
     <i class="bi bi-plus-circle"></i> Ajouter Personnel
   </a>
   
@@ -50,14 +50,14 @@
 
 
             <td>
-              <button class="btn btn-primary" (click)="modifierPersonnel(personnel.idPersonnel)">
+              <button  *ngIf="authService.isAdmin()" class="btn btn-primary" (click)="modifierPersonnel(personnel.idPersonnel)">
                 <i class="bi bi-pencil-square"></i>
             
               </button>
             </td>
 
             <td>
-              <button class="btn btn-danger"
+              <button  *ngIf="authService.isAdmin()" class="btn btn-danger"
               (click)="supprimerPersonnel(personnel)">
               <i class="bi bi-trash"></i>
               </button>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Contrat } from '../model/contrat.model';
 import { PersonnelService } from '../services/personnel.service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-contrat',
@@ -13,7 +14,7 @@ export class ContratComponent implements OnInit {
 
  contrats? : Contrat[] ;
 
-  constructor( private personnelService: PersonnelService ,private router: Router ) {
+  constructor( private personnelService: PersonnelService ,private router: Router, public authService:AuthService ) {
   
       }
 

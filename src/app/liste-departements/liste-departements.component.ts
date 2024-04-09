@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PersonnelService } from '../services/personnel.service';
 import { Departement } from '../model/departement.model';
 import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-liste-departements',
@@ -15,7 +16,7 @@ export class ListeDepartementsComponent implements OnInit{
   allDepartements! : Departement[];
   searchTerm!: string;
 
-  constructor(private personnelService : PersonnelService,
+  constructor(private personnelService : PersonnelService,  public authService: AuthService ,
              private router : Router){}
 
 

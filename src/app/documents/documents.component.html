@@ -4,7 +4,7 @@
     <div class="mb-3">
         <h2>Liste des documents</h2>
         <!-- Add button to navigate to add contrat page -->
-        <button type="button" class="btn btn-primary" routerLink="/addDocument">Ajouter un document</button>
+        <button type="button"  *ngIf="authService.isAdmin()" class="btn btn-primary" routerLink="/addDocument">Ajouter un document</button>
     </div>
     <div class="card shadow mb-4">
         <div class="card-body">
@@ -18,8 +18,8 @@
                         <td>{{document.type}}</td>
                         <td>{{document.dateCreation}}</td>
                         
-                        <td><a class="btn btn-danger" (click)="supprimerDocument(document)">Supprimer</a></td>
-                        <td><a class="btn btn-warning" [routerLink]="['/updateDocument',document.idDocument]">Modifier</a></td>
+                        <td><a  *ngIf="authService.isAdmin()" class="btn btn-danger" (click)="supprimerDocument(document)">Supprimer</a></td>
+                        <td><a  *ngIf="authService.isAdmin()" class="btn btn-warning" [routerLink]="['/updateDocument',document.idDocument]">Modifier</a></td>
                     </tr>
                 </tbody>
             </table>
