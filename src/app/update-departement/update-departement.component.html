@@ -13,11 +13,24 @@
   
         <div class="mb-3">
           <label for="nomDep" class="form-label">Nom Departement:</label>
-          <input type="text" [(ngModel)]="currentDep.nomDep" id="nomDep" name="nomDep"
-            class="form-control">
+          <input type="text" [(ngModel)]="currentDep.nomDep" id="nomDep" name="nomDep" class="form-control" required #nomDepField="ngModel">
+          <div *ngIf="nomDepField?.invalid && (nomDepField?.dirty || nomDepField?.touched)" class="text-danger">
+          <div *ngIf="nomDepField?.errors?.['required']">Nom Departement requis.</div>
+        </div>
         </div>
 
         
+
+        <!-- <div class="mb-3">
+          <label for="fonction" class="form-label">Fonction :</label>
+          <input type="text" [(ngModel)]="newPersonnel.fonction" name="fonction" class="form-control" placeholder="Entrez La Fonction d'un Personnel" required #fonctionField="ngModel">
+          <div *ngIf="fonctionField?.invalid && (fonctionField?.dirty || fonctionField?.touched)" class="text-danger">
+          <div *ngIf="fonctionField?.errors?.['required']">Fonction requise.</div>
+          <div *ngIf="fonctionField?.errors?.['fonction'] && !fonctionField?.errors?.['required']"></div>
+        </div>
+      </div>
+      </div> -->
+
   
        
   

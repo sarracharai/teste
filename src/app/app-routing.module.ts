@@ -32,6 +32,8 @@ import { ForbiddenComponent } from './forbidden/forbidden.component';
 //import { PersonnelGuard } from './guard/personnel.guard';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { UpdateDepartementComponent } from './update-departement/update-departement.component';
+import { RegisterComponent } from './register/register.component';
+import { VerifEmailComponent } from './verif-email/verif-email.component';
 
 const routes: Routes = [
 
@@ -72,10 +74,12 @@ const routes: Routes = [
   {path: "updateContrat/:id", component :UpdateContratComponent},
   {path: "addAbsence", component: AddAbsenceComponent},
   {path: "addConge", component: AddCongeComponent},
-
   {path: "updateAbsence/:id", component :UpdateAbsenceComponent},
   {path: 'login', component: LoginComponent},
   {path: 'app-forbidden', component: ForbiddenComponent},
+  {path:'register',component:RegisterComponent},
+  { path: 'verifEmail', component: VerifEmailComponent },
+  
   {path: "", redirectTo: "sidebar", pathMatch: "full" }
 
 ];

@@ -1,3 +1,5 @@
+<!-- <app-navbar></app-navbar>  -->
+ 
 <div class="container">
     <div>
       <h2>Ajouter Personnel :</h2>
@@ -6,50 +8,117 @@
       <div class="col-md-6">
         <div  hidden class="mb-3">
           <label for="idPersonnel" class="form-label">Id Personnel :</label>
-          <input type="text" [(ngModel)]="newPersonnel.idPersonnel" name="idPersonnel" class="form-control"  placeholder="Entrez l'ID" required>
+          <input type="text" [(ngModel)]="newPersonnel.idPersonnel" name="idPersonnel" class="form-control" placeholder="Entrez l'ID" required>
         </div>
+
+
         <div class="mb-3">
           <label for="nomPersonnel" class="form-label">Nom Personnel :</label>
-          <input type="text" [(ngModel)]="newPersonnel.nomPersonnel" name="nomPersonnel"  class="form-control"  placeholder="Entrez Le Nom Personnel" required>
+          <input type="text" [(ngModel)]="newPersonnel.nomPersonnel" name="nomPersonnel" class="form-control" placeholder="Entrez Le Nom Personnel" required #nomPersonnelField="ngModel">
+          <div *ngIf="nomPersonnelField?.invalid && (nomPersonnelField?.dirty || nomPersonnelField?.touched)" class="text-danger">
+          <div *ngIf="nomPersonnelField?.errors?.['required']">Nom requis.</div>
+          <div *ngIf="nomPersonnelField?.errors?.['prenomPersonnel'] && !nomPersonnelField?.errors?.['required']"></div>
         </div>
+      </div>
+
+
         <div class="mb-3">
           <label for="prenomPersonnel" class="form-label">Prenom Personnel :</label>
-          <input type="text" [(ngModel)]="newPersonnel.prenomPersonnel" name="prenomPersonnel" class="form-control" placeholder="Entrez Le Prenom Personnel" required>
+          <input type="text" [(ngModel)]="newPersonnel.prenomPersonnel" name="prenomPersonnel" class="form-control" placeholder="Entrez Le Prenom Personnel" required #prenomPersonnelField="ngModel">
+          <div *ngIf="prenomPersonnelField?.invalid && (prenomPersonnelField?.dirty || prenomPersonnelField?.touched)" class="text-danger">
+          <div *ngIf="prenomPersonnelField?.errors?.['required']">Prenom requis.</div>
+          <div *ngIf="prenomPersonnelField?.errors?.['prenomPersonnel'] && !prenomPersonnelField?.errors?.['required']"></div>
+          </div>
         </div>
+
+
+
         <div class="mb-3">
           <label for="dateNaissance" class="form-label">Date Naissance :</label>
-          <input type="date" [(ngModel)]="newPersonnel.dateNaissance" name="dateNaissance" class="form-control" >
-        </div>
+          <input type="date" [(ngModel)]="newPersonnel.dateNaissance" name="dateNaissance" class="form-control" required #dateNaissanceField="ngModel"
+                 [max]="getCurrentDate() | date: 'yyyy-MM-dd'">
+          <div *ngIf="!isDateOfBirthValid()" class="text-danger">
+              
+              <div *ngIf="dateNaissanceField?.invalid && (dateNaissanceField?.dirty || dateNaissanceField?.touched)">
+                <div *ngIf="!newPersonnel.dateNaissance">La date de naissance est requise.</div>
+              </div> 
+                <div *ngIf="newPersonnel.dateNaissance && newPersonnel.dateNaissance > getCurrentDate()">
+                  La date de naissance {{ newPersonnel.dateNaissance | date: 'dd/MM/yyyy' }} ne peut pas être dans le futur.
+              </div>
+              <div *ngIf="newPersonnel.dateNaissance && getDateOfBirthError() === 3">
+                  Le personnel doit être âgé d'au moins 18 ans. (Date de naissance: {{ newPersonnel.dateNaissance | date: 'dd/MM/yyyy' }})
+              </div>
+          </div>
+      </div>
+      
+
         <div class="mb-3">
           <label for="idDep" class="form-label">Département :</label>
-          <select class="form-control" id="idDep" name="idDep" [(ngModel)]="newIdDep" >
+          <select class="form-control" id="idDep" name="idDep" [(ngModel)]="newIdDep" required #idDepField="ngModel">
             <option *ngFor="let dep of departements" [value]="dep.idDep">{{dep.nomDep}} </option>
           </select>
+          <!-- Afficher un message d'erreur si le département n'est pas sélectionné -->
+            <div *ngIf="idDepField?.invalid && (idDepField?.dirty || idDepField?.touched)" class="text-danger">
+            <div *ngIf="idDepField?.errors?.['required']">Département requis.</div>
+            <div *ngIf="idDepField?.errors?.['idDep'] && !idDepField?.errors?.['required']"></div>
+          </div>
         </div>
       </div>
   
+
+
       <div class="col-md-6">
         <div class="mb-3">
           <label for="email" class="form-label">Email :</label>
-          <input type="text" [(ngModel)]="newPersonnel.email" name="email" class="form-control" placeholder="Entrez Le Email d'un Personnel" required>
+          <input type="email" [(ngModel)]="newPersonnel.email" name="email" class="form-control" placeholder="Entrez Le Email d'un Personnel" required #emailField="ngModel">
+          <!-- Afficher un message d'erreur si l'email n'est pas valide -->
+          <div *ngIf="emailField?.invalid && (emailField?.dirty || emailField?.touched)" class="text-danger">
+            <div *ngIf="emailField?.errors?.['required']">Email requis.</div>
+            <div *ngIf="emailField?.errors?.['email'] && !emailField?.errors?.['required']">Format d'email incorrect.</div>
+            <div *ngIf="validateEmail() !== ''">{{ validateEmail() }}</div>
+          </div>
         </div>
+
+        
         <div class="mb-3">
           <label for="numTelephone" class="form-label">Numero Telephone :</label>
-          <input type="text" [(ngModel)]="newPersonnel.numTelephone" name="numTelephone" class="form-control" placeholder="Entrez Le Telephone d'un Personnel" required>
+          <div class="input-group">
+            <span class="input-group-text">+216</span>
+            <input type="text" [(ngModel)]="newPersonnel.numTelephone" name="numTelephone" class="form-control" placeholder="Entrez Le Telephone d'un Personnel" required pattern="\d{8}" #numTelephoneField="ngModel">
+          </div>
+          <!-- Afficher un message d'erreur si le numéro de téléphone ne correspond pas au format attendu -->
+          <div *ngIf="numTelephoneField?.invalid && (numTelephoneField?.dirty || numTelephoneField?.touched)" class="text-danger">
+            <div *ngIf="numTelephoneField?.errors?.['required']">Numero de Telephone requis.</div>
+            <div *ngIf="numTelephoneField?.errors?.['pattern']">Le numéro de téléphone doit contenir exactement 8 chiffres.</div>
+          </div>
         </div>
+
         <div class="mb-3">
           <label for="adresse" class="form-label">Adresse :</label>
-          <input type="text" [(ngModel)]="newPersonnel.adresse" name="adresse" class="form-control" placeholder="Entrez L'Adresse d'un Personnel" required>
+          <input type="text" [(ngModel)]="newPersonnel.adresse" name="adresse" class="form-control" placeholder="Entrez L'Adresse d'un Personnel" required #adresseField="ngModel">
+          <!-- Afficher un message d'erreur si l'adresse est vide -->
+          <div *ngIf="adresseField?.invalid && (adresseField?.dirty || adresseField?.touched)" class="text-danger">
+          <div *ngIf="adresseField?.errors?.['required']">Adresse requise.</div>
+          <div *ngIf="adresseField?.errors?.['adresse'] && !adresseField?.errors?.['required']"></div>
         </div>
+      </div>
+
+
         <div class="mb-3">
           <label for="fonction" class="form-label">Fonction :</label>
-          <input type="text" [(ngModel)]="newPersonnel.fonction" name="fonction" class="form-control" placeholder="Entrez La Fonction d'un Personnel" required>
+          <input type="text" [(ngModel)]="newPersonnel.fonction" name="fonction" class="form-control" placeholder="Entrez La Fonction d'un Personnel" required #fonctionField="ngModel">
+          <div *ngIf="fonctionField?.invalid && (fonctionField?.dirty || fonctionField?.touched)" class="text-danger">
+          <div *ngIf="fonctionField?.errors?.['required']">Fonction requise.</div>
+          <div *ngIf="fonctionField?.errors?.['fonction'] && !fonctionField?.errors?.['required']"></div>
         </div>
-        
+      </div>
       </div>
   
+
+
       <div class="col-md-12 mt-4">
         <button type="submit" (click)="addPersonnel()" class="btn btn-success mb-2">Ajouter</button>
+        
       </div>
     </form>
   </div>

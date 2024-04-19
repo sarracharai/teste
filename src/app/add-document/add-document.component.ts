@@ -19,6 +19,11 @@ export class AddDocumentComponent implements OnInit {
 
     addDocument(){
       
+       // Vérifier si tous les champs requis sont remplis
+    if (!this.newDocument.type || !this.newDocument.dateCreation ) {
+      alert('Veuillez remplir tous les champs.');
+    return; // Ne soumettez pas le formulaire si un champ est vide
+}
             this.personnelService.ajouterDocument(this.newDocument).subscribe(() => {
             this.router.navigate(['documents']);
               });

@@ -1,22 +1,32 @@
-<div class="container">
+<!-- <app-navbar></app-navbar>   -->
+ <app-navbar></app-navbar>  
+<div class="center-container">
+    <div class="container">
+
     <div>
         <h2>Ajouter un Document :</h2>
     </div>
     <form>
-        <div [hidden] class="col-sm-2 col-md-2 col-lg-2">
-            <label>ID </label>
+        <div class="col-md-11">
+        <div hidden class="mb-3">
+            <label class="form-label">ID </label>
             <input type="text" [(ngModel)]="newDocument.idDocument" name="idDocument" class="form-control">
         </div>
-        <div class="col-sm-4 col-md-4 col-lg-4">
-            <label>type</label>
-            <input type="text" [(ngModel)]="newDocument.type" name="type" class="form-control">
+        <div class="mb-3">
+            <label class="form-label">Type Document :</label>
+            <input type="text" [(ngModel)]="newDocument.type" name="type" class="form-control" required #typeField="ngModel">
+            <div *ngIf="typeField?.invalid && (typeField?.dirty || typeField?.touched)" class="text-danger">
+            <div *ngIf="typeField?.errors?.['required']">Type requis.</div>
+            <div *ngIf="typeField?.errors?.['type'] && !typeField?.errors?.['required']"></div>
+            </div>
         </div>
-        <div class="col-sm-2 col-md-2 col-lg-2">
-            <label>date</label>
+
+        <div class="mb-3">
+            <label class="form-label">Date De Creation : </label>
             <input type="date" [(ngModel)]="newDocument.dateCreation" name="dateCreation" class="form-control">
         </div>
    
-         
+    </div>
         <div class="mt-2">
             
             <button type="submit"  (click)="addDocument()"class="btn btn-success">ajouter</button>

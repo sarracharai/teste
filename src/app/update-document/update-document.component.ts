@@ -26,6 +26,11 @@ export class UpdateDocumentComponent implements OnInit {
    //   
   updateDocument(){
       
+    // Vérifier si tous les champs requis sont remplis
+    if (this.currentDocument.type || this.currentDocument.dateCreation) {
+      alert('Veuillez remplir tous les champs.');
+    return; // Ne soumettez pas le formulaire si un champ est vide
+  }
       this.personnelService.updateDocument(this.currentDocument).subscribe(doc => {
       this.router.navigate(['/documents']);
       }); 

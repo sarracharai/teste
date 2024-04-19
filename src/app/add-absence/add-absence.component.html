@@ -1,39 +1,49 @@
+ <app-navbar></app-navbar> 
 <div class="container">
     <div>
         <h2>Ajouter un Absence :</h2>
     </div>
     <form>
-        <div hidden class="col-sm-2 col-md-2 col-lg-2">
-            <label>ID </label>
-            <input type="text" [(ngModel)]="newAbsence.idAbs" name="idAbs" class="form-control">
-        </div>
-        <div class="col-sm-4 col-md-4 col-lg-4">
-            <label>heures Abs</label>
-            <input type="number" [(ngModel)]="newAbsence.heuresAbs" name="heuresAbs" class="form-control">
-        </div>
-        <div class="col-sm-2 col-md-2 col-lg-2">
-            <label>type</label>
-            <input type="text" [(ngModel)]="newAbsence.typeAbs" name="typeAbs" class="form-control">
-        </div>
+        <div class="col-md-11">
+            <div hidden class="mb-3">
+                <label class="form-label">ID :</label>
+                <input type="text" [(ngModel)]="newAbsence.idAbs" name="idAbs" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Nombres d'Heures d'Absences :</label>
+                <input type="number" [(ngModel)]="newAbsence.heuresAbs" name="heuresAbs" class="form-control" placeholder="Entrez Le Nombres d'Heures d'Absence ....">
+            </div>
 
-        <div class="col-sm-4 col-md-4 col-lg-4">
-            <label>statut</label>
-            <input type="text" [(ngModel)]="newAbsence.statut" name="statut" class="form-control">
-        </div>
-    
+            <div class="mb-3">
+                <label class="form-label">Type d'absence:</label>
+                <input type="text" [(ngModel)]="newAbsence.typeAbs" name="typeAbs" class="form-control" placeholder="Entrez Le Type d'absence ...." required #typeAbsField="ngModel">
+                <div *ngIf="typeAbsField?.invalid && (typeAbsField?.dirty || typeAbsField?.touched)" class="text-danger">
+                <div *ngIf="typeAbsField?.errors?.['required']">Type d'absence requis.</div>
+                <div *ngIf="typeAbsField?.errors?.['typeAbs'] && !typeAbsField?.errors?.['required']"></div>
+              </div>
+            </div>
 
-    <div class="col-sm-4 col-md-4 col-lg-4">
-       <label>idAssiduites</label>
-       <select class="form-control form-control-lg" id="idAbs" name="idAbs" [(ngModel)]="newIdAssiduite">
-           <option *ngFor="let ab of assiduites" [value]="ab.idAssiduite">
-               {{ab.idAssiduite}}
-           </option>
-       </select>
-   </div>
-         
-        <div class="mt-2">
-            
-            <button type="submit"  (click)="addAbsence()"class="btn btn-success">ajouter</button>
+
+            <div class="mb-3">
+                <label class="form-label">Statut d'Absence :</label>
+                <input type="text" [(ngModel)]="newAbsence.statut" name="statut" class="form-control" placeholder="Entrez Le Statut d'absence ...." required #statutField="ngModel">
+                <div *ngIf="statutField?.invalid && (statutField?.dirty || statutField?.touched)" class="text-danger">
+                <div *ngIf="statutField?.errors?.['required']">Statut d'Absence requis.</div>
+                <div *ngIf="statutField?.errors?.['statut'] && !statutField?.errors?.['required']"></div>
+              </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Id Assiduites :</label>
+                <select class="form-control form-control-lg" id="idAbs" name="idAbs" [(ngModel)]="newIdAssiduite">
+                    <option *ngFor="let ab of assiduites" [value]="ab.idAssiduite">
+                        {{ab.idAssiduite}}
+                    </option>
+                </select>
+            </div>
         </div>
     </form>
+    <div class="mt-2">
+        <button type="submit" (click)="addAbsence()" class="btn btn-success">ajouter</button>
+    </div>
 </div>
+

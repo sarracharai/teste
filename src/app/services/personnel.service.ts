@@ -165,7 +165,7 @@ export class PersonnelService {
     }
 
   supprimerPersonnel(idPersonnel : number) {
-      const url = `${this.baseUrl}/delete/${idPersonnel}`;
+      const url = `${this.baseUrl}/delp/${idPersonnel}`;
       let jwt = this.authService.getToken();
       jwt = "Bearer "+jwt;
       let httpHeaders = new HttpHeaders({"Authorization":jwt})

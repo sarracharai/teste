@@ -35,6 +35,12 @@ export class UpdateAbsenceComponent  {
 
    
   updateAbsence(){
+
+    // Vérifier si tous les champs requis sont remplis
+    if (!this.currentAbsence.typeAbs|| !this.currentAbsence.statut ) {
+      alert('Veuillez remplir tous les champs.');
+    return; // Ne soumettez pas le formulaire si un champ est vide
+  }
       this.currentAbsence.assiduite=this.assiduites?.find(ab=>ab.idAssiduite==this.updatedAsId)!;
       this.personnelService.updateAbsence(this.currentAbsence).subscribe(as => {
       this.router.navigate(['/listeAbsences']);

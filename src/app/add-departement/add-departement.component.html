@@ -1,15 +1,24 @@
-<form>
+ <app-navbar></app-navbar>  
+<div class="container">
+    <div>
+      <h2>Ajouter Un Nouveau Departement :</h2>
+    </div>
+    <form class="row">
 
-    <div [hidden] >
-        <label for="idDep" class="form-label">ID Departement</label> 
+    <div hidden  class="mb-3">
+        <label for="idDep" class="form-label">ID Departement :</label> 
         <input [(ngModel)]="newDepartement.idDep" name="idDep"
             class="form-control w-25">
     </div>
 
-    <div>
-    <label for="nomDep" class="form-label" >Nom Departement</label> 
+    <div class="mb-3">
+    <label for="nomDep" class="form-label" >Nom Departement :</label> 
     <input type="text" [(ngModel)]="newDepartement.nomDep" name="nomDep"
-        class="form-control" placeholder="Entrez un nom de l'avion...">
+        class="form-control" placeholder="Entrez un nom ..." required #nomDepField="ngModel">
+        <div *ngIf="nomDepField?.invalid && (nomDepField?.dirty || nomDepField?.touched)" class="text-danger">
+            <div *ngIf="nomDepField?.errors?.['required']">Nom Departement requis.</div>
+            <div *ngIf="nomDepField?.errors?.['nomDep'] && !nomDepField?.errors?.['required']"></div>
+          </div>
     </div>
 
 
@@ -17,3 +26,4 @@
         <button type="submit" (click)="addDepartement()" class="btn btn-success mb-2">Ajouter</button>
       </div>
 </form> 
+</div>

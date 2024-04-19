@@ -16,6 +16,11 @@ export class AddCongeComponent implements OnInit {
      private router:Router){}
 
  addConge(){
+  // Vérifier si tous les champs requis sont remplis
+  if (!this.newConge.typeConge || !this.newConge.dateDebut || !this.newConge.dateFin || !this.newConge.justifConge || !this.newConge.dateDemande) {
+    alert('Veuillez remplir tous les champs.');
+  return; // Ne soumettez pas le formulaire si un champ est vide
+}
  this.personnelService.ajouterConge(this.newConge)
  .subscribe(cong => { console.log(cong);
  this.router.navigate(['listeConge']);

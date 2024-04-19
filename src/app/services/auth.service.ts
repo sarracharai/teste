@@ -15,13 +15,26 @@ export class AuthService implements OnInit {
 
   public loggedUser!:string; 
   public isloggedIn: Boolean = false;
-  public roles!:string[];                 
+  public roles!:string[];        
+  
+  public regitredUser : User = new User();
+
   private helper = new JwtHelperService();
+
 
   constructor(private router: Router,
               private http : HttpClient) { }
-  ngOnInit(): void {
-  }
+
+  
+  setRegistredUser(user : User){ 
+
+    this.regitredUser=user;
+   }
+
+  getRegistredUser(){
+    return this.regitredUser; 
+      }
+ 
   logout() {
     this.loggedUser = undefined!;
     this.roles = undefined!;
@@ -47,7 +60,7 @@ export class AuthService implements OnInit {
      return this.roles.indexOf('ADMIN') >=0;
      }
 
-     setLoggedUserFromLocalStorage(login : string) { 
+  setLoggedUserFromLocalStorage(login : string) { 
       this.loggedUser = login;
       this.isloggedIn = true;
       //this.getUserRoles(login);
@@ -60,28 +73,47 @@ export class AuthService implements OnInit {
           });
              } */
 
-             login(user : User) {
-               return this.http.post<User>(this.apiURL+'/login', user , {observe:'response'}); 
-            }
-             saveToken(jwt:string){ 
-              localStorage.setItem('jwt',jwt);
-               this.token = jwt;
-                this.isloggedIn = true; 
-              }
+  login(user : User) {
+    return this.http.post<User>(this.apiURL+'/login', user , {observe:'response'}); 
+     }
 
-              decodeJWT() { if (this.token == undefined) return;
-                 const decodedToken = this.helper.decodeToken(this.token);
-                  this.roles = decodedToken.roles;
-                  console.log("roles "+this.roles)
-                   this.loggedUser = decodedToken.sub; 
-                  }
+  saveToken(jwt:string){ 
+    localStorage.setItem('jwt',jwt);
+    this.token = jwt;
+    this.isloggedIn = true; 
+    }
 
-              getToken():string { 
-                return this.token; 
-              }
+  decodeJWT() {
+    if (this.token == undefined) return;
+    const decodedToken = this.helper.decodeToken(this.token);
+    this.roles = decodedToken.roles;
+    console.log("roles "+this.roles)
+    this.loggedUser = decodedToken.sub; 
+      }
 
-              loadToken() { this.token = localStorage.getItem('jwt')!;
-               this.decodeJWT(); }
+  getToken():string { 
+    return this.token; 
+       }
 
-               isTokenExpired(): Boolean { return this.helper.isTokenExpired(this.token); }
+  loadToken() { this.token = localStorage.getItem('jwt')!;
+    this.decodeJWT(); 
+  }
+
+  isTokenExpired(): Boolean {
+    return this.helper.isTokenExpired(this.token); 
+   }
+
+  registerUser(user :User){
+    return this.http.post<User>(this.apiURL+'/register', user, {observe:'response'});
+  }
+
+  validateEmail(code : string){
+    return this.http.get<User>(this.apiURL+'/verifyEmail/'+code);
+   }
+
+
+
+  ngOnInit(): void {
+      }
+
 }

@@ -1,3 +1,4 @@
+<app-navbar></app-navbar>
 <div class="container">
     <div>
       <h2>Ajouter un Pret :</h2>
@@ -7,20 +8,27 @@
 
     <div hidden >
         <label for="idPret" class="form-label">id Pret</label> 
-        <input  [(ngModel)]="newPret.idPret" name="idPret"
-            class="form-control w-25">
+        <input  [(ngModel)]="newPret.idPret" name="idPret" class="form-control w-25" >
     </div>
 
     <div>
     <label for="statutPret" class="form-label" >type Pret</label> 
     <input type="text" [(ngModel)]="newPret.statutPret" name="statutPret"
-        class="form-control" placeholder="Entrez un type...">
+        class="form-control" placeholder="Entrez un type..." required #statutPretField="ngModel">
+        <div *ngIf="statutPretField?.invalid && (statutPretField?.dirty || statutPretField?.touched)" class="text-danger">
+        <div *ngIf="statutPretField?.errors?.['required']">Type requis.</div>
+        <div *ngIf="statutPretField?.errors?.['statutPret'] && !statutPretField?.errors?.['required']"></div>
+        </div>
     </div>
 
      <div >
-        <label for="montant" class="form-label">Montant</label> 
-        <input type="number" [(ngModel)]="newPret.montant" name="montant"
-            class="form-control " placeholder="Entrez un montant...">
+    <label for="montant" class="form-label">Montant</label> 
+    <input type="number" [(ngModel)]="newPret.montant" name="montant" class="form-control " 
+        placeholder="Entrez un montant..." required #montantField="ngModel">
+        <div *ngIf="montantField?.invalid && (montantField?.dirty || montantField?.touched)" class="text-danger">
+        <div *ngIf="montantField?.errors?.['required']">Type requis.</div>
+        <div *ngIf="montantField?.errors?.['montant'] && !montantField?.errors?.['required']"></div>
+        </div>
     </div>
 
     <div class="mt-4">

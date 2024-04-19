@@ -16,6 +16,21 @@ export class UpdateContratComponent implements OnInit {
     private router :Router,
     private personnelService: PersonnelService) { }
 
+   
+   //   
+  updateContrat(){
+
+    // Vérifier si tous les champs requis sont remplis
+    if (!this.currentContrat.type || !this.currentContrat.nomSociete || !this.currentContrat.dateEmbauche || !this.currentContrat.dateSignature ) {
+      alert('Veuillez remplir tous les champs.');
+    return; // Ne soumettez pas le formulaire si un champ est vide
+  }
+      
+      this.personnelService.updateContrat(this.currentContrat).subscribe(doc => {
+      this.router.navigate(['/contrats']);
+      }); 
+    }
+  
     ngOnInit(): void {
       
       
@@ -24,13 +39,5 @@ export class UpdateContratComponent implements OnInit {
       
       } ) ;
       }
-   //   
-  updateContrat(){
-      
-      this.personnelService.updateContrat(this.currentContrat).subscribe(doc => {
-      this.router.navigate(['/contrats']);
-      }); 
-    }
-  
   
 }

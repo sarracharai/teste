@@ -18,6 +18,11 @@ export class UpdateDepartementComponent implements OnInit {
     private personnelService: PersonnelService) { }
 
   updateDepartement() {
+    // Vérifier si tous les champs requis sont remplis
+    if (!this.currentDep.nomDep) {
+      alert('Veuillez remplir tous les champs.');
+    return; // Ne soumettez pas le formulaire si un champ est vide
+  }
     this.personnelService.updateDepartement(this.currentDep).subscribe(dep => {
       this.router.navigate(['/listeDep']);
       }); 

@@ -35,6 +35,8 @@ import { LoginComponent } from './login/login.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { UpdateDepartementComponent } from './update-departement/update-departement.component';
+import { RegisterComponent } from './register/register.component';
+import { VerifEmailComponent } from './verif-email/verif-email.component';
 
 @NgModule({
   declarations: [
@@ -69,7 +71,9 @@ import { UpdateDepartementComponent } from './update-departement/update-departem
     LoginComponent,
     ForbiddenComponent,
     NavbarComponent,
-    UpdateDepartementComponent
+    UpdateDepartementComponent,
+    RegisterComponent,
+    VerifEmailComponent
   ],
   imports: [
     BrowserModule,
@@ -77,6 +81,7 @@ import { UpdateDepartementComponent } from './update-departement/update-departem
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

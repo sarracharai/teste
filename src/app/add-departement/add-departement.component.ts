@@ -17,6 +17,12 @@ export class AddDepartementComponent implements OnInit{
               private router:Router){}
 
    addDepartement(){
+
+     // Vérifier si tous les champs requis sont remplis
+     if (!this.newDepartement.nomDep ) {
+      alert('Veuillez remplir tous les champs.');
+    return; // Ne soumettez pas le formulaire si un champ est vide
+  }
     this.personnelService.ajouterDepartement(this.newDepartement)
      .subscribe(dep => { console.log(dep);
        this.router.navigate(['listeDep']);

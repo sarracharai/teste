@@ -5,16 +5,20 @@
     </div>
 <form>
 
-    <div [hidden] >
+    <div hidden >
         <label for="idConge" class="form-label">id Conge</label> 
         <input [(ngModel)]="newConge.idConge" name="idConge"
             class="form-control w-25">
     </div>
 
     <div>
-    <label for="typeConge" class="form-label" >type Conge</label> 
-    <input type="text" [(ngModel)]="newConge.typeConge" name="typeConge"
-        class="form-control" placeholder="Entrez un type...">
+        <label for="typeConge" class="form-label">type Conge</label> 
+        <input type="text" [(ngModel)]="newConge.typeConge" name="typeConge" class="form-control"
+            placeholder="Entrez un type..." required #typeCongeField="ngModel">
+        <div *ngIf="typeCongeField?.invalid && (typeCongeField?.dirty || typeCongeField?.touched)" class="text-danger">
+        <div *ngIf="typeCongeField?.errors?.['required']">Nom requis.</div>
+        <div *ngIf="typeCongeField?.errors?.['typeConge'] && !typeCongeField?.errors?.['required']"></div>
+        </div>
     </div>
 
      <div >
@@ -32,8 +36,12 @@
 
     <div>
     <label for="justifConge" class="form-label" >Justification de  Conge</label> 
-    <input type="text" [(ngModel)]="newConge.justifConge" name="justifConge"
-        class="form-control" placeholder="Entrez un type...">
+    <input type="text" [(ngModel)]="newConge.justifConge" name="justifConge"class="form-control" 
+        placeholder="Entrez un type..." required #justifCongeField="ngModel">
+        <div *ngIf="justifCongeField?.invalid && (justifCongeField?.dirty || justifCongeField?.touched)" class="text-danger">
+        <div *ngIf="justifCongeField?.errors?.['required']">Nom requis.</div>
+        <div *ngIf="justifCongeField?.errors?.['justifConge'] && !justifCongeField?.errors?.['required']"></div>
+        </div>
     </div>
 
 

@@ -17,6 +17,13 @@ export class UpdateCongeComponent implements OnInit {
               private personnelService : PersonnelService) {}
 
   updateConge() {
+
+    // Vérifier si tous les champs requis sont remplis
+    if (!this.currentConge.typeConge|| !this.currentConge.justifConge ) {
+      alert('Veuillez remplir tous les champs.');
+    return; // Ne soumettez pas le formulaire si un champ est vide
+  }
+
     this.personnelService.updateConge(this.currentConge).subscribe(p => {
       this.router.navigate(['/listeConge', this.currentConge.idConge]);
     });

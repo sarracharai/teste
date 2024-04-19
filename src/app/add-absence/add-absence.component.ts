@@ -27,6 +27,11 @@ export class AddAbsenceComponent implements OnInit {
 
 
     addAbsence(){
+      // Vérifier si tous les champs requis sont remplis
+    if (!this.newAbsence.typeAbs || !this.newAbsence.statut ) {
+      alert('Veuillez remplir tous les champs.');
+    return; // Ne soumettez pas le formulaire si un champ est vide
+  }
       this.newAbsence.assiduite = this.assiduites.find(ab => ab.idAssiduite == this.newIdAssiduite)!;
             this.personnelService.ajouterAbsence(this.newAbsence).subscribe(() => {
             this.router.navigate(['/listeAbsences']);

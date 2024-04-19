@@ -1,27 +1,30 @@
-<div class="container">
-    <div>
-        <h2>Ajouter un Assiduite :</h2>
-    </div>
-    <form>
-        <div hidden class="col-sm-2 col-md-2 col-lg-2">
-            <label>ID </label>
-            <input type="text" [(ngModel)]="newAssiduite.idAssiduite" name="idAssiduite" class="form-control">
-        </div>
-        <div class="col-sm-4 col-md-4 col-lg-4">
-            <label>nbHeures travaillés</label>
-            <input type="text" [(ngModel)]="newAssiduite.nbHeures" name="nbHeures" class="form-control">
-        </div>
-        <div class="col-sm-2 col-md-2 col-lg-2">
-            <label>nbHeures supplementaires</label>
-            <input type="number" [(ngModel)]="newAssiduite.heuresSupp" name="heuresSupp" class="form-control">
-        </div>
-    
+ <app-navbar></app-navbar> 
 
-   
-         
-        <div class="mt-2">
-            
-            <button type="submit"  (click)="addAssiduite()"class="btn btn-success">ajouter</button>
-        </div>
-    </form>
+<div class="container">
+    <div class="col-md-8">
+        <h2>Ajouter un Assiduité :</h2>
+        <form>
+            <div class="col-md-6">
+                <div hidden class="mb-3">
+                    <label class="form-label">ID </label>
+                    <input type="text" [(ngModel)]="newAssiduite.idAssiduite" name="idAssiduite" class="form-control">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">nbHeures travaillés</label>
+                    <input type="text" [(ngModel)]="newAssiduite.nbHeures" name="nbHeures" class="form-control">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label class="form-label">nbHeures supplementaires</label>
+                    <input type="number" [(ngModel)]="newAssiduite.heuresSupp" name="heuresSupp" class="form-control">
+                </div>
+            </div>
+
+            <div class="mt-2">
+                <button type="submit" class="btn btn-success" (click)="addAssiduite()">Ajouter</button>
+            </div>
+        </form>
+    </div>
 </div>

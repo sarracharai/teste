@@ -9,6 +9,7 @@ import { PersonnelService } from '../services/personnel.service';
 @Component({
   selector: 'app-update-assiduite',
   templateUrl: './update-assiduite.component.html',
+  styleUrls: ['./update-assiduite.component.css']
   
 })
 export class UpdateAssiduiteComponent {
@@ -32,6 +33,11 @@ export class UpdateAssiduiteComponent {
       }
    //   
   updateAssiduite(){
+    // Vérifier si tous les champs requis sont remplis
+    if (this.currentAssiduite.nbHeures === null || this.currentAssiduite.heuresSupp === null) {
+      alert('Veuillez remplir tous les champs.');
+    return; // Ne soumettez pas le formulaire si un champ est vide
+  }
       this.currentAssiduite.absence=this.absences?.find(ab=>ab.idAbs==this.updatedAbId)!;
       this.personnelService.updateAssiduite(this.currentAssiduite).subscribe(as => {
       this.router.navigate(['assiduites']);
