@@ -1,0 +1,23 @@
+<app-navbar></app-navbar>
+
+<div class="container mt-4">
+    <div class="card border-0 shadow-sm">
+        <div class="card-header bg-primary text-white py-3">
+            <h2 class="mb-0">Nouveau Message</h2>
+        </div>
+        <div class="card-body">
+            <form (ngSubmit)="addPublication()" #messageForm="ngForm">
+                <div class="mb-3">
+                    <label for="publication" class="form-label">Contenu :</label>
+                    <textarea class="form-control" id="publication" rows="5" [(ngModel)]="publication" name="publication" required></textarea>
+                    <div class="invalid-feedback" *ngIf="messageForm.controls['publication'].invalid && messageForm.controls['publication'].touched">
+                        Veuillez entrer du contenu..
+                    </div>
+                </div>
+                <div class="text-end">
+                    <button type="submit" class="btn btn-primary">Ajouter</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

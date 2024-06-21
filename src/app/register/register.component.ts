@@ -1,10 +1,9 @@
-import { AuthService } from './../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { User } from '../model/user.model';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
-
-
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-register',
@@ -15,49 +14,48 @@ export class RegisterComponent implements OnInit {
   public user = new User();
   confirmPassword?:string;
   myForm!: FormGroup;
-
   err:any;
+  loading : boolean = false;
+  constructor(private formBuilder: FormBuilder,private authService :AuthService,private router:Router, 
+    private toastr: ToastrService) { }
+  ngOnInit(): void {
+  this.myForm = this.formBuilder.group({
+  username : ['', [Validators.required]],
+  email : ['', [Validators.required, Validators.email]],
+  password : ['', [Validators.required, Validators.minLength(6)]],
+  confirmPassword : ['', [Validators.required]]
+  } );
+  }
 
 
-  constructor(private formBuilder: FormBuilder , private authService : AuthService,
-              private router : Router
-  ) { }
-
- 
-        
-  onRegister() { 
-    console.log(this.user);
-    this.authService.registerUser(this.user).subscribe({
-      next:(res)=>{
-        this.authService.setRegistredUser(this.user);
-        alert("veillez confirmer votre email");
-        this.router.navigate(["/verifEmail"]);
-        
-      },
-
-
-      error:(err:any)=>{ 
-      // if(err.error.errorCode=="USER_EMAIL_ALREADY_EXISTS"){
-      // this.err="Email_Already_used";
-      //  }  } })
-      //Dans le cas ou je vais pas utiliser l'erreur de backend donc je vais utiliser cette erreur au niveau de angular 
-
-
-        if(err.status=400){ ///Dans le cas ou je vais utiliser l'erreur de backend 
-          this.err= err.error.message; 
-          } 
-        } 
-
-    })
-
+  onRegister(){
+      
+console.log(this.user);
+this.loading=true;
+this.authService.registerUser(this.user).subscribe({
+next:(res)=>{
+  //////verifyEmail 148
+  this. authService.setRegistredUser(this.user);
+  //alert("veillez confirmer votre email");
+  this.loading=false;
+  this.toastr.success('veillez confirmer votre email', 'Confirmation');
+  this.router.navigate(["/verifEmail"]);  
+},
+error: (err: any) => {
+  if (err.status === 403) {
+    // Gestion de l'erreur 403 Forbidden
+    this.err = "Vous n'avez pas la permission d'effectuer cette action.";
+  } else if (err.status === 400 && err.error && err.error.errorCode) {
+    // Vérification de la présence de la propriété errorCode
+    this.err = err.error.errorCode;
+  } else {
+    // Gestion d'autres erreurs
+    this.err = "Une erreur inattendue s'est produite.";
+  }
 }
 
+}
+)
+}
 
-ngOnInit(): void {
-  this.myForm = this.formBuilder.group({ 
-      username : ['', [Validators.required]], email : ['', [Validators.required, Validators.email]],
-      password : ['', [Validators.required, Validators.minLength(6)]],
-      confirmPassword : ['', [Validators.required]] 
-    } ); 
-    }
 }

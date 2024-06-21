@@ -1,3 +1,4 @@
+import { PersonnelContratDataComponent } from './personnel-contrat-data/personnel-contrat-data.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PersonnelComponent } from './personnel/personnel.component';
@@ -14,7 +15,6 @@ import { UpdateCongeComponent } from './update-conge/update-conge.component';
 import { ListepretComponent } from './listepret/listepret.component';
 import { AddPretComponent } from './add-pret/add-pret.component';
 import { UpdatePretComponent } from './update-pret/update-pret.component';
-
 import { AssiduitesComponent } from './assiduites/assiduites.component';
 import { UpdateAssiduiteComponent } from './update-assiduite/update-assiduite.component';
 import { AddAssiduiteComponent } from './add-assiduite/add-assiduite.component';
@@ -34,9 +34,30 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { UpdateDepartementComponent } from './update-departement/update-departement.component';
 import { RegisterComponent } from './register/register.component';
 import { VerifEmailComponent } from './verif-email/verif-email.component';
+import { PersonnelDataComponent } from './personnel-data/personnel-data.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { PersonnelCongeDataComponent } from './personnel-conge-data/personnel-conge-data.component';
+import { PersonnelPretDataComponent } from './personnel-pret-data/personnel-pret-data.component';
+import { PersonnelAssiduiteDataComponent } from './personnel-assiduite-data/personnel-assiduite-data.component';
+import { ResponsableComponent } from './responsable/responsable.component';
+import { NotificationComponent } from './notification/notification.component';
+import { AddNotificationComponent } from './add-notification/add-notification.component';
+import { EditProfilComponent } from './edit-profil/edit-profil.component';
+import { EditProfilRespComponent } from './edit-profil-resp/edit-profil-resp.component';
+import { AdminComponent } from './admin/admin.component';
+import { EditProfilAdminComponent } from './edit-profil-admin/edit-profil-admin.component';
+import { PersonnelDocDataComponent } from './personnel-doc-data/personnel-doc-data.component';
+import { PublicationComponent } from './publication/publication.component';
+import { AddPublicationComponent } from './add-publication/add-publication.component';
+import { UsersComponent } from './users/users.component';
+import { NewProfilComponent } from './new-profil/new-profil.component';
+import { NewProfilRhComponent } from './new-profil-rh/new-profil-rh.component';
+import { UpdateAdminComponent } from './update-admin/update-admin.component';
+import { ProfilAdministrateurComponent } from './profil-administrateur/profil-administrateur.component';
 
 const routes: Routes = [
-
+  
+  {path: "users", component : UsersComponent},
   {path: "personnel", component : PersonnelComponent },
   {path: "addPersonnel", component : AddPersonnelComponent /*, canActivate:[PersonnelGuard] */ },
   {path: "updatePersonnel/:idPersonnel", component : UpdatePersonnelComponent },
@@ -57,10 +78,6 @@ const routes: Routes = [
   {path: "updatePret/:idPret", component: UpdatePretComponent},
   {path: "sidebar", component: SidebarComponent},
   {path: "departement", component: AddDepartementComponent},
-  
-
-
-
   {path: "assiduites", component : AssiduitesComponent},
   {path: "addAssiduite", component : AddAssiduiteComponent},
   {path: "updateAssiduite/:id", component :UpdateAssiduiteComponent},
@@ -78,9 +95,30 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'app-forbidden', component: ForbiddenComponent},
   {path:'register',component:RegisterComponent},
-  { path: 'verifEmail', component: VerifEmailComponent },
-  
-  {path: "", redirectTo: "sidebar", pathMatch: "full" }
+  {path:'verifEmail', component: VerifEmailComponent },
+  {path:'user-data' , component: PersonnelDataComponent},
+  {path:'userConge-data' , component: PersonnelCongeDataComponent},
+  {path:'userPret-data' , component: PersonnelPretDataComponent},
+  {path:'userDoc-data' , component: PersonnelDocDataComponent},
+  {path:'userContrat-data' , component: PersonnelContratDataComponent},
+  {path:'userAssiduite-data' , component: PersonnelAssiduiteDataComponent},
+  {path:'dashbord' , component: DashboardComponent},
+  {path:'editProfil' , component: EditProfilComponent},
+  {path:'editProfilResp', component:EditProfilRespComponent},
+  {path:'editProfilAdmin' , component: EditProfilAdminComponent},
+  {path:'notification', component: NotificationComponent},
+  {path:"responsable", component: ResponsableComponent},
+  {path: "admin", component: AdminComponent},
+  {path: "profilAdmin/:idAdmin", component:ProfilAdministrateurComponent},
+  {path:'updateAdmin/:id' , component: UpdateAdminComponent},
+  {path: 'updateNotification/:id', component: NotificationComponent },
+  {path: "addNotification", component : AddNotificationComponent},
+  {path: 'publication', component: PublicationComponent},
+  {path: "addPublication", component : AddPublicationComponent},
+  // {path: "newProfil",component : NewProfilComponent},
+  // {path:'editProfilAdmin/:id' , component: EditProfilAdminComponent},
+  // {path: "newProfilRh",component :NewProfilRhComponent },
+  {path: "", redirectTo: "login", pathMatch: "full" },
 
 ];
 

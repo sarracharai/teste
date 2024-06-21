@@ -1,0 +1,62 @@
+/* your-component.component.css */
+
+.container {
+    margin-top: 5rem;
+  }
+  
+  .row {
+    justify-content: center;
+  }
+  
+  .col-md-4 {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 2rem;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .alert {
+    margin-bottom: 1.5rem;
+  }
+  
+  .txt_field {
+    margin-bottom: 1.5rem;
+  }
+  
+  .txt_field label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  
+  .txt_field input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  .btn-success {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .btn-success:hover {
+    background-color: #218838;
+  }
+  
+  .mt-3 {
+    margin-top: 1rem !important;
+  }
+  
+  .mt-5 {
+    margin-top: 3rem !important;
+  }
+  

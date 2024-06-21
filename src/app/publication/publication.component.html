@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Google Icons</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<app-navbar></app-navbar>
+<body>
+    <div class="container mt-5">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 class="mb-0">List of Messages</h2>
+            <button *ngIf="authService.isAdmin()" class="btn btn-primary" routerLink="/addPublication">
+                <i class="fa fa-plus"></i> Add Message
+            </button>
+        </div>
+
+        <div *ngIf="successMessage" class="alert alert-success">
+            {{ successMessage }}
+        </div>
+
+        <div *ngFor="let publication of publications.slice().reverse()">
+            <div class="mb-4 mx-auto ms-3 message-container" style="max-width: 500px;">
+                <div class="card border-primary">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="fa fa-envelope me-3" style="font-size: 2rem; color: #007bff;"></i>
+                            <!-- Afficher le texte du message -->
+                            <p class="card-text message-text"><strong>{{ publication.publication }}</strong></p>
+                            <!-- Afficher la date du message -->
+                            <p class="card-text ms-auto date-text">
+                                <strong>{{ getTimeDifference(publication.dateAjout) }}</strong>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Add comment form -->
+                    <div class="card-footer bg-transparent d-flex justify-content-between align-items-center">
+                        <form class="d-flex align-items-center w-100" (submit)="addComment(publication)">
+                            <textarea class="form-control me-2" [(ngModel)]="newComments[publication.idPublication]" name="newComment" rows="2" placeholder="écrire un commentaire.."></textarea>
+                            <!-- Replace Add Comment button with send icon -->
+                            <button type="submit" class="btn btn-light">
+                                <i class="material-icons" style="font-size:23px;color:rgb(22, 54, 194)">send</i>
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Loop through all comments associated with the message -->
+                    <div *ngFor="let commentaire of publication.commentaires">
+                        <div class="card mt-2 comment-container">
+                            <div class="card-body d-flex justify-content-between align-items-center">
+                                <div>
+                                    <p class="card-text comment-text">{{ commentaire.commentaire }}</p>
+                                    <p class="card-text"><small class="text-muted">{{ getTimeDifference(commentaire.dateAjout) }}</small></p>
+                                </div>
+                                <button *ngIf="authService.isAdmin()" class="btn btn-danger btn-sm ms-2" (click)="deleteCommentaire(commentaire)">
+                                    Delete <i class="fa fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-footer bg-transparent d-flex justify-content-between align-items-center">
+                        <button *ngIf="authService.isAdmin()" class="btn btn-danger btn-sm" (click)="deleteMessage(publication)">
+                            Delete <i class="fa fa-trash"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

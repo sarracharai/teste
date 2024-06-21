@@ -1,0 +1,53 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <div>
+        <h2>Modifier la demande:</h2>
+    </div>
+    <form>
+        <div  class="col-sm-2 col-md-2 col-lg-2" hidden="true">
+            <label>ID </label>
+            <input hidden type="text" [(ngModel)]="currentNotification.idNotification" name="idNotification" class="form-control">
+        </div>
+
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label>personnel correspondant</label>
+            <select class="form-control form-control-lg" id="idNotification" name="idNotification" [(ngModel)]="updatedAsId">
+                <option *ngFor="let ab of personnels" [value]=" ab.id">
+                 {{ab.nom }} {{ ab.prenom + ' - ' + ab.numCin}}
+                </option>  
+            </select>
+        </div> 
+
+        
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label>Type</label>
+            <select class="form-control" [(ngModel)]="currentNotification.type" name="type">
+                <option value="absence">absence</option>
+                <option value="congé">congé</option>
+                <option value="pret">pret</option>
+            </select>
+        </div>
+
+        
+        
+        <div class="col-sm-2 col-md-2 col-lg-2">
+            <label>date demande</label>
+            <input type="date" [(ngModel)]="currentNotification.dateDemande" name="dateDemande" class="form-control">
+        </div>
+
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label>État</label>
+            <select class="form-control" [(ngModel)]="currentNotification.etat" name="etat">
+                <option value="en attente">En attente</option>
+                <option value="consulté">Consulté</option>
+            </select>
+        </div>
+
+        
+       
+
+        <div class="mt-2">
+            <button type="submit" (click)="updateNotification()" class="btn btn-success">Modifer</button>
+        </div>
+    </form>
+</div>

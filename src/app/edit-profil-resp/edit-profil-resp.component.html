@@ -1,0 +1,90 @@
+<app-navbar></app-navbar>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="profile-card">
+        <img src="assets/profil.jpg" alt="Photo de profil">
+        <h4>{{responsableData.nom}} {{responsableData.prenom}}</h4>
+        <div class="text-center">
+          <button type="submit" class="btn btn-success" (click)="onSubmit()">Modifier</button>   
+          <button type="button" id="cancel" name="cancel" class="btn btn-secondary" (click)="onCancel()">Annuler</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <form (ngSubmit)="onSubmit()" class="custom-form">
+        <h3>Modifier Responsable :</h3>
+
+        <div class="row mb-3">
+          <div class="col-md-6">
+            <label for="id" class="form-label">Id Responsable:</label>
+            <input readonly type="text" [(ngModel)]="responsableData.id" id="id" name="id" class="form-control" [readonly]="true">
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <div class="col-md-6">
+            <label for="nom" class="form-label">Nom Responsable:</label>
+            <input type="text" [(ngModel)]="responsableData.nom" id="nom" name="nom" class="form-control" required>
+          </div>
+
+          <div class="col-md-6">
+            <label for="prenom" class="form-label">Prenom Responsable:</label>
+            <input type="text" [(ngModel)]="responsableData.prenom" id="prenom" name="prenom" class="form-control" required>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <div class="col-md-6">
+            <label for="dateNaissance" class="form-label">Date Naissance:</label>
+            <input type="date" [ngModel]="responsableData.dateNaissance | date: 'yyyy-MM-dd'" (ngModelChange)="responsableData.dateNaissance = $event" required #dateNaissanceField="ngModel"
+              name="dateNaissance" class="form-control"
+              [max]="getCurrentDate() | date: 'yyyy-MM-dd'">
+            <div *ngIf="!isDateOfBirthValid()" class="text-danger">
+              <div *ngIf="dateNaissanceField?.invalid && (dateNaissanceField?.dirty || dateNaissanceField?.touched)">
+                <div *ngIf="!responsableData.dateNaissance">La date de naissance est requise.</div>
+              </div>
+              <div *ngIf="responsableData.dateNaissance && responsableData.dateNaissance > getCurrentDate()">
+                La date de naissance {{ responsableData.dateNaissance | date: 'dd/MM/yyyy' }} ne peut pas être dans le futur.
+              </div>
+              <div *ngIf="responsableData.dateNaissance && getDateOfBirthError() === 3">
+                Le personnel doit être âgé d'au moins 18 ans. (Date de naissance: {{ responsableData.dateNaissance | date: 'dd/MM/yyyy' }})
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <label for="email" class="form-label">Email:</label>
+            <input type="text" [(ngModel)]="responsableData.email" id="email" name="email" class="form-control" required #emailField="ngModel">
+            <div *ngIf="emailField?.invalid && (emailField?.dirty || emailField?.touched)" class="text-danger">
+              <div *ngIf="emailField?.errors?.['required']">Email requis.</div>
+              <div *ngIf="emailField?.errors?.['email'] && !emailField?.errors?.['required']">Format d'email incorrect.</div>
+              <div *ngIf="validateEmail() !== ''">{{ validateEmail() }}</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <div class="col-md-6">
+            <label for="numTelephone" class="form-label">Numero Telephone:</label>
+            <div class="input-group">
+              <span class="input-group-text">+216</span>
+              <input type="text" [(ngModel)]="responsableData.numTelephone" id="numTelephone" name="numTelephone" class="form-control" required pattern="\d{8}" #numTelephoneField="ngModel">
+            </div>
+            <div *ngIf="numTelephoneField.invalid && (numTelephoneField.dirty || numTelephoneField.touched)" class="text-danger">
+              <div *ngIf="numTelephoneField.errors?.['required']">Numero de Telephone requis.</div>
+              <div *ngIf="numTelephoneField.errors?.['pattern'] || !isValidPhoneNumber(responsableData.numTelephone.toString())">Le numéro de téléphone doit contenir exactement 8 chiffres.</div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <label for="adresse" class="form-label">Adresse:</label>
+            <input type="text" [(ngModel)]="responsableData.adresse" id="adresse" name="adresse" class="form-control">
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

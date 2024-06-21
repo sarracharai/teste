@@ -1,35 +1,43 @@
-<!-- <app-navbar></app-navbar>   -->
- <app-navbar></app-navbar>  
-<div class="center-container">
-    <div class="container">
+<app-navbar></app-navbar>
 
-    <div>
-        <h2>Ajouter un Document :</h2>
-    </div>
-    <form>
-        <div class="col-md-11">
-        <div hidden class="mb-3">
-            <label class="form-label">ID </label>
-            <input type="text" [(ngModel)]="newDocument.idDocument" name="idDocument" class="form-control">
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Type Document :</label>
-            <input type="text" [(ngModel)]="newDocument.type" name="type" class="form-control" required #typeField="ngModel">
-            <div *ngIf="typeField?.invalid && (typeField?.dirty || typeField?.touched)" class="text-danger">
-            <div *ngIf="typeField?.errors?.['required']">Type requis.</div>
-            <div *ngIf="typeField?.errors?.['type'] && !typeField?.errors?.['required']"></div>
-            </div>
-        </div>
+<div class="container">
+  <div class="mb-3">
+    <h2>Ajouter un Document :</h2>
+  </div>
+  <form (ngSubmit)="addDocument()">
+    <div class="col-md-11">
+      <div hidden class="mb-3">
+        <label class="form-label">ID </label>
+        <input type="text" [(ngModel)]="newDocument.idDocument" name="idDocument" class="form-control">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Type Document :</label>
+        <select class="form-control" [(ngModel)]="newDocument.type" name="type">
+            <option value="">Sélectionner un type</option>
+            <option value="Certificat">Certificat</option>
+            <option value="Lettre de motivation">Lettre de motivation</option>
+            <option value="Fiche de paie">Fiche de paie</option>
+            <option value="Autres">Autres</option>
+        </select>
+      </div>
 
-        <div class="mb-3">
-            <label class="form-label">Date De Creation : </label>
-            <input type="date" [(ngModel)]="newDocument.dateCreation" name="dateCreation" class="form-control">
-        </div>
-   
+      <div class="mb-3">
+        <label class="form-label">Date De Creation : </label>
+        <input type="date" [(ngModel)]="newDocument.dateCreation" name="dateCreation" class="form-control">
+      </div>
+      <div class="form-group">
+        <label>Username</label>
+        <input type="text" [(ngModel)]="newDocument.username" name="username" class="form-control">
     </div>
-        <div class="mt-2">
-            
-            <button type="submit"  (click)="addDocument()"class="btn btn-success">ajouter</button>
-        </div>
-    </form>
+
+      <div class="mb-3">
+        <label class="form-label">Fichier :</label>
+        <input type="file" (change)="onFileChange($event)" class="form-control-file">
+      </div>
+    </div>
+
+    <div class="mt-2">
+      <button type="submit" class="btn btn-success">Ajouter</button>
+    </div>
+  </form>
 </div>

@@ -23,7 +23,8 @@ export class AddAssiduiteComponent implements OnInit {
 
     ngOnInit(): void {
       this.personnelService.listeAbsences().
-      subscribe(abs => {console.log(abs);
+      subscribe(abs => {
+        console.log(abs);
       this.absences = abs;
       }
       );

@@ -3,23 +3,38 @@
 <div class="container">
     <div class="mb-3">
         <h2>Liste des documents</h2>
-        <!-- Add button to navigate to add contrat page -->
-        <button type="button"  *ngIf="authService.isAdmin()" class="btn btn-primary" routerLink="/addDocument">Ajouter un document</button>
+        <button type="button" *ngIf="authService.isAdmin()" class="btn btn-primary" routerLink="/addDocument">Ajouter un document</button>
     </div>
     <div class="card shadow mb-4">
         <div class="card-body">
             <table class="table table-striped">
                 <thead>
-                    <tr> <th>Id</th><th>type</th> <th>dateCreation</th>  <th>Actions</th> </tr>
-                </thead>
-                <tbody *ngFor="let document of documents">
                     <tr>
-                        <td>{{document.idDocument}}</td>
-                        <td>{{document.type}}</td>
-                        <td>{{document.dateCreation}}</td>
+                        <th>Id</th>
+                        <th>Type</th>
+                        <th>Date de Création</th>
+                        <th>Chemin du fichier</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let document of documents">
+                        <td>{{ document.idDocument }}</td>
+                        <td>{{ document.type }}</td>
+                        <td>{{ document.dateCreation }}</td>
+                        <td>
+                            <a *ngIf="document.url" (click)="downloadPdf(document)">
+                                Télécharger le fichier PDF
+                            </a>
+                        </td>
                         
-                        <td><a  *ngIf="authService.isAdmin()" class="btn btn-danger" (click)="supprimerDocument(document)">Supprimer</a></td>
-                        <td><a  *ngIf="authService.isAdmin()" class="btn btn-warning" [routerLink]="['/updateDocument',document.idDocument]">Modifier</a></td>
+                        
+
+                        
+                        <td>
+                            <a *ngIf="authService.isAdmin()" class="btn btn-danger" (click)="supprimerDocument(document)">Supprimer</a>
+                            <a *ngIf="authService.isAdmin()" class="btn btn-warning" [routerLink]="['/updateDocument', document.idDocument]">Modifier</a>
+                        </td>
                     </tr>
                 </tbody>
             </table>

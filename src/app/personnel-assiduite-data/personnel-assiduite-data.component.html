@@ -1,0 +1,36 @@
+<app-navbar></app-navbar>
+  <div class="card">
+<div *ngIf="assiduiteData">
+    <!-- <h1>Bienvenue, {{ assiduiteData?.personnel.nomPersonnel}} {{ assiduiteData?.personnel.prenomPersonnel }}</h1> -->
+  </div>
+  <div class="card-body">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <!-- <th scope="col">Nom</th>
+          <th scope="col">Prénom</th> -->
+          <th scope="col">idAssiduite</th>
+          <th scope="col">Username</th>
+          <th scope="col">nbHeures</th>
+          <th scope="col">totalAbsences</th>
+          <th scope="col">heuresSupp</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <!-- <td>{{ assiduiteData?.personnel.nomPersonnel }}</td>
+          <td>{{ assiduiteData?.personnel.prenomPersonnel }}</td> -->
+          <td>{{ assiduiteData?.idAssiduite }}</td>
+          <td>{{ assiduiteData?.username }}</td>
+          <td>{{ assiduiteData?.nbHeures }}</td>
+          <td>{{ assiduiteData?.totalAbsences }}</td>
+          <td>{{ assiduiteData?.heuresSupp }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <div *ngIf="error">
+    <p>Erreur lors de la récupération des données utilisateur.</p>
+  </div>
+  </div>

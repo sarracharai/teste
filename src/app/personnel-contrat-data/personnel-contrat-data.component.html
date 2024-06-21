@@ -1,0 +1,38 @@
+<app-navbar></app-navbar>
+<div class="container mt-5">
+    <div *ngIf="contratData" class="card">
+        <div class="card-header">
+            <h3>Informations du Contrat</h3>
+        </div>
+        <div class="card-body">
+            <div class="row mb-3">
+                <div class="col-md-4 font-weight-bold">ID Contrat:</div>
+                <div class="col-md-8">{{ contratData?.idContrat }}</div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-4 font-weight-bold">Type de Contrat:</div>
+                <div class="col-md-8">{{ contratData?.type }}</div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-4 font-weight-bold">Date d'embauche:</div>
+                <div class="col-md-8">{{ contratData?.dateEmbauche | date:'dd/MM/yyyy' }}</div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-4 font-weight-bold">Date de Signature:</div>
+                <div class="col-md-8">{{ contratData?.dateSignature | date:'dd/MM/yyyy' }}</div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-4 font-weight-bold">Nom de la Société:</div>
+                <div class="col-md-8">{{ contratData?.nomSociete }}</div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-4 font-weight-bold">Nom d'utilisateur:</div>
+                <div class="col-md-8">{{ contratData?.username }}</div>
+            </div>
+            <button class="btn btn-primary mt-3" (click)="printPage()">Imprimer</button>
+        </div>
+    </div>
+    <div *ngIf="error" class="alert alert-danger mt-3">
+        <p>Erreur lors de la récupération des données utilisateur.</p>
+    </div>
+</div>

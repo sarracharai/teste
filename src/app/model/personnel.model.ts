@@ -1,15 +1,13 @@
 import { Conge } from './conge.model';
 import { Departement } from './departement.model';
 import { Pret } from './pret.model';
-export class Personnel {
-    idPersonnel! : number;
-	nomPersonnel! : String;
-	prenomPersonnel! : String;
-	dateNaissance! : Date;
-	email! : String;
-	numTelephone! : number;
-	adresse! : String;
+import { Utilisateur } from './utilisateur.model';
+export class Personnel extends Utilisateur{
+    
+	numCin! : String;
+	username! : String; 
 	fonction! :String ;
+	sexe! :String;
 	departement!: Departement;
 	conge!:Conge;
 	pret!:Pret;

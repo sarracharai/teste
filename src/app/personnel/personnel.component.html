@@ -26,6 +26,7 @@
             <th scope="col">idPersonnel</th>
             <th scope="col">Nom Personnel</th>
             <th scope="col">Prenom Personnel</th>
+            <!-- <th scope="col">username</th> -->
             <th scope="col">Date Naissance</th>
             <th scope="col">Email</th>
             <th scope="col">Numero Telephone</th>
@@ -38,9 +39,10 @@
         </thead>
         <tbody *ngFor="let personnel of personnels">
           <tr>
-            <td>{{personnel.idPersonnel}}</td>
-            <td>{{personnel.nomPersonnel}}</td>
-            <td>{{personnel.prenomPersonnel}}</td>
+            <td>{{personnel.id}}</td>
+            <td>{{personnel.nom}}</td>
+            <td>{{personnel.prenom}}</td>
+            <!-- <td>{{personnel.username}}</td> -->
             <td>{{personnel.dateNaissance | date:'dd/MM/yyyy'}}</td>
             <td>{{personnel.email}}</td>
             <td>{{personnel.numTelephone}}</td>
@@ -50,7 +52,7 @@
 
 
             <td>
-              <button  *ngIf="authService.isAdmin()" class="btn btn-primary" (click)="modifierPersonnel(personnel.idPersonnel)">
+              <button  *ngIf="authService.isAdmin()" class="btn btn-primary" (click)="modifierPersonnel(personnel.id)">
                 <i class="bi bi-pencil-square"></i>
             
               </button>
@@ -64,7 +66,7 @@
             </td> 
             
             <td>
-              <button class="btn btn-link" (click)="voirDetails(personnel.idPersonnel)">
+              <button class="btn btn-link" (click)="voirDetails(personnel.id)">
                 <i class="bi bi-person"></i>
               </button>
             </td>

@@ -7,30 +7,48 @@
     <form class="row">
       <div class="col-md-6">
         <div  hidden class="mb-3">
-          <label for="idPersonnel" class="form-label">Id Personnel :</label>
-          <input type="text" [(ngModel)]="newPersonnel.idPersonnel" name="idPersonnel" class="form-control" placeholder="Entrez l'ID" required>
+          <label for="id" class="form-label">Id Personnel :</label>
+          <input type="text" [(ngModel)]="newPersonnel.id" name="id" class="form-control" placeholder="Entrez l'ID" required>
         </div>
 
-
         <div class="mb-3">
-          <label for="nomPersonnel" class="form-label">Nom Personnel :</label>
-          <input type="text" [(ngModel)]="newPersonnel.nomPersonnel" name="nomPersonnel" class="form-control" placeholder="Entrez Le Nom Personnel" required #nomPersonnelField="ngModel">
-          <div *ngIf="nomPersonnelField?.invalid && (nomPersonnelField?.dirty || nomPersonnelField?.touched)" class="text-danger">
-          <div *ngIf="nomPersonnelField?.errors?.['required']">Nom requis.</div>
-          <div *ngIf="nomPersonnelField?.errors?.['prenomPersonnel'] && !nomPersonnelField?.errors?.['required']"></div>
+          <label for="nom" class="form-label">Nom Personnel :</label>
+          <input type="text" [(ngModel)]="newPersonnel.nom" name="nom" class="form-control" placeholder="Entrez Le Nom Personnel" required #nomField="ngModel">
+          <div *ngIf="nomField?.invalid && (nomField?.dirty || nomField?.touched)" class="text-danger">
+          <div *ngIf="nomField?.errors?.['required']">Nom requis.</div>
+          <div *ngIf="nomField?.errors?.['prenom'] && !nomField?.errors?.['required']"></div>
         </div>
       </div>
 
 
         <div class="mb-3">
-          <label for="prenomPersonnel" class="form-label">Prenom Personnel :</label>
-          <input type="text" [(ngModel)]="newPersonnel.prenomPersonnel" name="prenomPersonnel" class="form-control" placeholder="Entrez Le Prenom Personnel" required #prenomPersonnelField="ngModel">
-          <div *ngIf="prenomPersonnelField?.invalid && (prenomPersonnelField?.dirty || prenomPersonnelField?.touched)" class="text-danger">
-          <div *ngIf="prenomPersonnelField?.errors?.['required']">Prenom requis.</div>
-          <div *ngIf="prenomPersonnelField?.errors?.['prenomPersonnel'] && !prenomPersonnelField?.errors?.['required']"></div>
+          <label for="prenom" class="form-label">Prenom Personnel :</label>
+          <input type="text" [(ngModel)]="newPersonnel.prenom" name="prenom" class="form-control" placeholder="Entrez Le Prenom Personnel" required #prenomField="ngModel">
+          <div *ngIf="prenomField?.invalid && (prenomField?.dirty || prenomField?.touched)" class="text-danger">
+          <div *ngIf="prenomField?.errors?.['required']">Prenom requis.</div>
+          <div *ngIf="prenomField?.errors?.['prenom'] && !prenomField?.errors?.['required']"></div>
           </div>
         </div>
 
+        <div class="mb-3">
+          <label for="username" class="form-label">User Name :</label>
+          <input type="text" [(ngModel)]="newPersonnel.username" name="username" class="form-control" placeholder="Entrez Le UserName" required #usernameField="ngModel">
+          <div *ngIf="usernameField?.invalid && (usernameField?.dirty || usernameField?.touched)" class="text-danger">
+          <div *ngIf="usernameField?.errors?.['required']">Username requis.</div>
+          <div *ngIf="usernameField?.errors?.['username'] && !usernameField?.errors?.['required']"></div>
+          </div>
+        </div>
+
+      <div class="mb-3">
+        <label for="numCin" class="form-label">Numéro CIN :</label>
+        <input type="text" [(ngModel)]="newPersonnel.numCin" name="numCin" class="form-control" placeholder="Entrez Le Numero Cin" required #FieldnumCin="ngModel">
+        <div *ngIf="FieldnumCin.invalid && (FieldnumCin.dirty || FieldnumCin.touched)" class="text-danger">
+            <div *ngIf="FieldnumCin.errors?.['required']">Numéro CIN requis.</div>
+            <div *ngIf="FieldnumCin.errors?.['pattern']">Numéro CIN invalide.</div>
+        </div>
+    </div>
+    
+      
 
 
         <div class="mb-3">

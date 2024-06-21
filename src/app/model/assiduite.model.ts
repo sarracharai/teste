@@ -1,4 +1,5 @@
 import { Absence } from "./absence.model";
+import { Personnel } from "./personnel.model";
 
 export class Assiduite {
     idAssiduite! : number;
@@ -6,6 +7,7 @@ export class Assiduite {
     nbHeures! : number;
     totalAbsences!:number;
     absence!:Absence;
+    personnel!:Personnel;
   
    
     

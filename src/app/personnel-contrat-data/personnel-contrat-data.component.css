@@ -1,0 +1,37 @@
+@media print {
+  body * {
+      visibility: hidden;
+  }
+  .card, .card * {
+      visibility: visible;
+  }
+  .card {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+  }
+  .btn {
+      display: none; /* Masquer les boutons lors de l'impression */
+  }
+}
+
+.container {
+  max-width: 800px;
+  margin: auto;
+}
+
+.card {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.card-header {
+  background-color: #8bbbee;
+  color: white;
+  padding: 10px;
+  border-bottom: 1px solid #8bbbee;
+}
+
+.font-weight-bold {
+  font-weight: bold;
+}

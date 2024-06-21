@@ -1,0 +1,36 @@
+<app-navbar></app-navbar>
+  <div class="card">
+<div *ngIf="pretData">
+    <h1>Bienvenue, {{ pretData?.personnel.nom  }} {{ pretData?.personnel.prenom }}</h1>
+  </div>
+  <div class="card-body">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">idPret</th>
+          <th scope="col">Nom</th>
+          <th scope="col">Prénom</th>
+          <th scope="col">montant</th>
+          <th scope="col">Username</th>
+          <th scope="col">Staut Pret</th>
+        
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{ pretData?.idPret }}</td>
+          <td>{{ pretData?.personnel.nom }}</td>
+          <td>{{ pretData?.personnel.prenom }}</td>
+          <td>{{ pretData?.montant }}</td>
+          <td>{{ pretData?.username }}</td>
+          <td>{{ pretData?.statutPret }}</td>
+          
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <div *ngIf="error">
+    <p>Erreur lors de la récupération des données utilisateur.</p>
+  </div>
+  </div>

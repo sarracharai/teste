@@ -3,6 +3,7 @@ import { Assiduite } from '../model/assiduite.model';
 import { Router } from '@angular/router';
 import { PersonnelService } from '../services/personnel.service';
 import { AuthService } from '../services/auth.service';
+import { Personnel } from '../model/personnel.model';
 
 @Component({
   selector: 'app-assiduites',
@@ -11,7 +12,11 @@ import { AuthService } from '../services/auth.service';
 })
 export class AssiduitesComponent implements OnInit {
   assiduites? : Assiduite[] ;
-  constructor( private personnelService: PersonnelService ,private router: Router , public authService: AuthService, ) {
+  newAssiduite = new Assiduite();
+  personnels!: Personnel[];
+  selectedPersonnel!: Personnel ; // Ajout d'une variable pour stocker le personnel sélectionné
+
+  constructor( private personnelService: PersonnelService,private router:Router ,public authService: AuthService) {
   
       }
  
@@ -21,10 +26,12 @@ export class AssiduitesComponent implements OnInit {
    }
   
    chargerAssiduites(){
+    
      this.personnelService.listeAssiduite().subscribe(ass=> {
        console.log(ass);
        this.assiduites = ass;
        });
+      
    }
 
 
@@ -33,7 +40,7 @@ export class AssiduitesComponent implements OnInit {
 let conf = confirm("Etes-vous sûr ?");
 if (conf)
   this.personnelService.supprimerAssiduite(a.idAssiduite).subscribe(() => {
-        console.log("produit supprimé");
+        console.log("assiduité supprimé");
         this.chargerAssiduites();     
       
 });

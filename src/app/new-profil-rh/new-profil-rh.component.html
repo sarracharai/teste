@@ -1,0 +1,88 @@
+<div class="container">
+    <div>
+      <h2>Ajouter Responsable RH :</h2>
+    </div>
+    <form class="row">
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label for="nom" class="form-label">Nom Responsable :</label>
+          <input type="text" [(ngModel)]="newResponsable.nom" name="nom" class="form-control" placeholder="Entrez Le Nom Responsable" required #nomField="ngModel">
+          <div *ngIf="nomField?.invalid && (nomField?.dirty || nomField?.touched)" class="text-danger">
+            <div *ngIf="nomField?.errors?.['required']">Nom requis.</div>
+          </div>
+        </div>
+  
+        <div class="mb-3">
+          <label for="prenom" class="form-label">Prenom Responsable :</label>
+          <input type="text" [(ngModel)]="newResponsable.prenom" name="prenom" class="form-control" placeholder="Entrez Le Prenom Responsable" required #prenomField="ngModel">
+          <div *ngIf="prenomField?.invalid && (prenomField?.dirty || prenomField?.touched)" class="text-danger">
+            <div *ngIf="prenomField?.errors?.['required']">Prénom requis.</div>
+          </div>
+        </div>
+  
+       
+  
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label for="dateNaissance" class="form-label">Date Naissance :</label>
+          <input type="date" [(ngModel)]="newResponsable.dateNaissance" name="dateNaissance" class="form-control" required #dateNaissanceField="ngModel"
+                 [max]="getCurrentDate() | date: 'yyyy-MM-dd'">
+          <div *ngIf="!isDateOfBirthValid()" class="text-danger">
+            <div *ngIf="dateNaissanceField?.invalid && (dateNaissanceField?.dirty || dateNaissanceField?.touched)">
+              <div *ngIf="!newResponsable.dateNaissance">La date de naissance est requise.</div>
+            </div>
+            <div *ngIf="newResponsable.dateNaissance && newResponsable.dateNaissance > getCurrentDate()">
+              La date de naissance {{ newResponsable.dateNaissance | date: 'dd/MM/yyyy' }} ne peut pas être dans le futur.
+            </div>
+            <div *ngIf="newResponsable.dateNaissance && getDateOfBirthError() === 3">
+              Le responsable doit être âgé d'au moins 18 ans. (Date de naissance: {{ newResponsable.dateNaissance | date: 'dd/MM/yyyy' }})
+            </div>
+          </div>
+        </div>
+  
+        <div class="mb-3">
+          <label for="email" class="form-label">Email :</label>
+          <input type="email" [(ngModel)]="newResponsable.email" name="email" class="form-control" placeholder="Entrez Le Email du Responsable" required #emailField="ngModel">
+          <div *ngIf="emailField?.invalid && (emailField?.dirty || emailField?.touched)" class="text-danger">
+            <div *ngIf="emailField?.errors?.['required']">Email requis.</div>
+            <div *ngIf="emailField?.errors?.['email'] && !emailField?.errors?.['required']">Format d'email incorrect.</div>
+            <div *ngIf="validateEmail() !== ''">{{ validateEmail() }}</div>
+          </div>
+        </div>
+  
+        <div class="mb-3">
+          <label for="numTelephone" class="form-label">Numero Telephone :</label>
+          <div class="input-group">
+            <span class="input-group-text">+216</span>
+            <input type="text" [(ngModel)]="newResponsable.numTelephone" name="numTelephone" class="form-control" placeholder="Entrez Le Telephone du Responsable" required pattern="\d{8}" #numTelephoneField="ngModel">
+          </div>
+          <div *ngIf="numTelephoneField?.invalid && (numTelephoneField?.dirty || numTelephoneField?.touched)" class="text-danger">
+            <div *ngIf="numTelephoneField?.errors?.['required']">Numero de Telephone requis.</div>
+            <div *ngIf="numTelephoneField?.errors?.['pattern']">Le numéro de téléphone doit contenir exactement 8 chiffres.</div>
+          </div>
+        </div>
+  
+        <div class="mb-3">
+          <label for="adresse" class="form-label">Adresse :</label>
+          <input type="text" [(ngModel)]="newResponsable.adresse" name="adresse" class="form-control" placeholder="Entrez L'Adresse du Responsable" required #adresseField="ngModel">
+          <div *ngIf="adresseField?.invalid && (adresseField?.dirty || adresseField?.touched)" class="text-danger">
+            <div *ngIf="adresseField?.errors?.['required']">Adresse requise.</div>
+          </div>
+        </div>
+  
+        <div class="mb-3">
+          <label for="username" class="form-label">Nom d'utilisateur :</label>
+          <input type="text" [(ngModel)]="newResponsable.username" name="username" class="form-control" placeholder="Entrez Le Nom d'utilisateur" required #usernameField="ngModel">
+          <div *ngIf="usernameField?.invalid && (usernameField?.dirty || usernameField?.touched)" class="text-danger">
+            <div *ngIf="usernameField?.errors?.['required']">Nom d'utilisateur requis.</div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="col-md-12 mt-4">
+        <button type="submit" class="btn btn-success mb-2" (click)="addResponsable()">Ajouter</button>
+      </div>
+      </div>
+    </form>
+  </div>
+  

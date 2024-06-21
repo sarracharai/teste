@@ -1,53 +1,44 @@
-/* ProfilPersonnelComponent CSS */
-
 .profile-section {
-    background-color: #eee;
-    padding: 50px 0;
-  }
-  
-  .breadcrumb {
-    background-color: transparent;
-    padding: 0;
-    margin-bottom: 1rem;
-  }
-  
-  .profile-card,
-  .profile-details-card {
-    border: none;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .profile-img {
-    width: 120px;
-    height: 120px;
-    object-fit: cover;
-    border-radius: 50%;
-  }
-  
-  .profile-details-card {
-    margin-top: 20px;
-  }
-  
-  .profile-info {
-    font-size: 14px;
-    line-height: 1.5;
-  }
-  
-  .profile-info p {
-    margin-bottom: 10px;
-  }
-  
-  .btn-primary,
-  .btn-outline-primary {
-    font-size: 12px;
-    padding: 6px 12px;
-  }
-  
-  /* Ajoutez des styles pour les hr */
-  hr {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    border: 0;
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
-  }
-  
+  background-color: #eee;
+  padding: 30px 0;
+}
+
+.breadcrumb {
+  background-color: transparent;
+  padding: 0;
+  margin-bottom: 1rem;
+}
+
+.profile-card,
+.profile-details-card {
+  border: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+
+.profile-info {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.profile-info p {
+  margin-bottom: 10px;
+}
+
+hr {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+.btn-primary, .btn-danger {
+  font-size: 14px;
+  padding: 6px 12px;
+}

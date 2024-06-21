@@ -1,0 +1,54 @@
+<app-navbar></app-navbar>
+
+<div class="container emp-profile mt-5">
+    <div class="row">
+        <div class="col-md-4 text-center">
+            <div class="profile-img">
+                <img src="assets/profil.jpg" alt="Profile Image">
+                <div class="profile-name mt-3">
+                    <h5>{{ admin?.prenom }} {{ admin?.nom }}</h5>
+                    <h6>{{ admin?.fonction }}</h6>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="profile-details">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>ID Utilisateur</label>
+                        <p>{{ admin?.id }}</p>
+                    </div>
+                    <div class="col-md-6">
+                        <label>Date de Naissance</label>
+                        <p>{{ admin?.dateNaissance | date:'dd/MM/yyyy' }}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>Adresse</label>
+                        <p>{{ admin?.adresse }}</p>
+                    </div>
+                    <div class="col-md-6">
+                        <label>Email</label>
+                        <p>{{ admin?.email }}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>Téléphone</label>
+                        <p>{{ admin?.numTelephone }}</p>
+                    </div>
+                    <div class="col-md-6">
+                        <label>Fonction</label>
+                        <p>{{ admin?.fonction }}</p>
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    <div class="col-md-12 text-center">
+                        <button type="button" class="btn btn-primary profile-edit-btn" (click)="navigateToProfileEdit(admin.id)">Modifier le profil</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

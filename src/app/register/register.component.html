@@ -1,46 +1,75 @@
-<div class="container mt-5">
-<div class="row justify-content-md-center">
-<div class="col-md-4">
-<form [formGroup]="myForm">
-     
-    <div class="alert alert-danger" *ngIf="err">
-         <strong>{{err}}</strong> 
-         <!-- il va lancee l'erreur 400 que j'ai mis dans le ts et qui initilement se trouve dans le backend 'userServiceImpl' -->
-    </div>
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+  <head>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div class="main"> 
+      <div class="container a-container" id="a-container">
+          <form class="form" [formGroup]="myForm">
 
-    <div class="form-group">
-        <label>Nom Utilisateur :</label>
-        <input type="text" name="username" class="form-control" formControlName="username" [(ngModel)]="user.username">
-    </div>
+            <h2 class="form_title title">S'inscrire </h2>
 
-        <span *ngIf="myForm.controls['username'].hasError('required')&& myForm.controls['username'].touched" class="text-danger"> Nom Utilisateur est obligatoire </span>
-    <div class="form-group">
-        <label>email :</label>
-        <input type="text" name="email" class="form-control" formControlName="email" [(ngModel)]="user.email">
-    </div>
+            <div class="form-group">
+                <!-- <label>Nom Utilisateur :</label> -->
+                <input  class="form__input" type="text" name="username" formControlName="username" placeholder="Entrez votre username" [(ngModel)]="user.username">
+            </div>
+            <span *ngIf="myForm.controls['username'].hasError('required')&& myForm.controls['username'].touched" class="text-danger"> Nom Utilisateur est obligatoire </span>
+            <div class="form-group">
+                <!-- <label>email :</label> -->
+                <input class="form__input" type="text" name="email"  formControlName="email" placeholder="Entrez votre E-mail" [(ngModel)]="user.email">
+            </div>
 
-        <span *ngIf="myForm.controls['email'].hasError('required')&& myForm.controls['email'].touched" class="text-danger"> email est obligatoire </span>
-        <span *ngIf="myForm.controls['email'].hasError('email')&& myForm.controls['email'].touched" class="text-danger"> email non valide </span>
-    <div class="form-group"> 
-        <label>Mot de passe :</label>
-        <input type="password" name="password" formControlName="password" [(ngModel)]="user.password" class="form-control">
-    </div>
-    
-        <span *ngIf="myForm.controls['password'].hasError('required')&& myForm.controls['password'].touched" class="text-danger"> mot de passe est obligatoire </span> 
-        <span *ngIf="myForm.controls['password'].hasError('minlength')&& myForm.controls['password'].touched" class="text-danger"> mot de passe doit contenir au moins 6 caractères </span>
-    <div class="form-group">
-        <label>Confirmer Mot de passe :</label>
-        <input type="password" name="confirmPassword" formControlName="confirmPassword" class="form-control">
-    </div>
 
+            <span *ngIf="myForm.controls['email'].hasError('required')&& myForm.controls['email'].touched" class="text-danger"> email est obligatoire </span>
+            <span *ngIf="myForm.controls['email'].hasError('email')&& myForm.controls['email'].touched" class="text-danger"> email non valide </span>
+        <div class="form-group"> 
+                <!-- <label>Mot de passe :</label> -->
+                <input class="form__input" type="password" name="password" formControlName="password" placeholder="Entrez un mot de passe" [(ngModel)]="user.password" >
+             </div>
+
+
+            <span *ngIf="myForm.controls['password'].hasError('required')&& myForm.controls['password'].touched" class="text-danger"> mot de passe est obligatoire </span> 
+            <span *ngIf="myForm.controls['password'].hasError('minlength')&& myForm.controls['password'].touched" class="text-danger"> mot de passe doit contenir au moins 6 caractères </span>
+        <div class="form-group">
+            <!-- <label>Confirmer Mot de passe :</label> -->
+            <input class="form__input" class="form__input" type="password" name="confirmPassword" formControlName="confirmPassword"placeholder="Confirmer votre mot de passe" >
+        </div>
         <span *ngIf="myForm.controls['confirmPassword'].hasError('required')&& myForm.controls['confirmPassword'].touched" class="text-danger"> confirmer mot de passe est obligatoire </span>
-    <div>
-        <span *ngIf="myForm.get('confirmPassword')?.touched && myForm.get('confirmPassword')?.value != myForm.get('password')?.value" class="text-danger"> Le mot de passe confrmé ne correspond pas au mot de passe tapé </span>
+        <div>
+            <span *ngIf="myForm.get('confirmPassword')?.touched && myForm.get('confirmPassword')?.value != myForm.get('password')?.value" class="text-danger"> Le mot de passe confrmé ne correspond pas au mot de passe tapé </span>
+        </div>
+        
+        <div *ngIf="loading==true" class="d-flex justify-content-center">
+          <div class="spinner-border" role="status"> <span class="sr-only">Loading...</span> </div>
+        </div>
+            <button class="form__button button submit" type="button" [disabled]="myForm.invalid"  (click)="onRegister()" (click)="onRegister()">S'INSCRIRE</button>
+        </form>
+      </div>
+
+
+      <div class="switch" id="switch-cnt">
+     <div class="switch__circle"></div>
+        <div class="switch__circle switch__circle--t"></div>
+        <div class="switch__container" id="switch-c1">
+          <div class="logo">
+            <img src="\assets\logo.png" alt="Logo">
+          </div>
+          <div class="text-center mt-4 name">
+            Ressources Humaines
+          </div>
+          <h2 class="switch__title title">Bienvenue !</h2>
+          <p class="switch__description description">Entrez vos coordonnées personnelles et commencez avec nous</p>
+          <button class="switch__button button switch-btn"   routerLink="/login" >SE CONNECTER </button>
+        </div>
+
+      </div>
     </div>
-    <br>
-    <button type="button" [disabled]="myForm.invalid" class="btn btn-success" (click)="onRegister()" >S'insrire</button>
-    <p>vous avez un compte? <a routerLink="/login">se connecter </a></p> 
-</form>
-</div>
-</div> 
-</div>
+  </body>
+</html>
+
+
+

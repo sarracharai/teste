@@ -1,0 +1,18 @@
+<app-navbar></app-navbar>
+<table>
+    <thead>
+      <tr>
+        <th>Nom</th>
+        <th>Email</th>
+        <th>Role</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of users" (click)="goToProfile(user.id, user.userType)">
+          <td>{{ user.nom }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.userType }}</td>
+        </tr>
+      </tbody>
+  </table>
+  

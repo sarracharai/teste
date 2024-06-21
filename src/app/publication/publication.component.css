@@ -1,0 +1,26 @@
+/* Style pour les publications */
+.message-container {
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+    font-size: 16px; /* Taille de police pour les publications */
+    max-width: 500px; /* Limite la largeur maximale des publications */
+}
+
+/* Style pour les commentaires */
+.comment-container {
+    margin-left: 20px; /* Pour l'espacement entre les commentaires et les publications */
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0px 1px 2px rgba(156, 47, 47, 0.1);
+    padding: 5px;
+    margin-bottom: 10px;
+    font-size: 16px; /* Taille de police pour les commentaires, plus petite que celle des publications */
+    max-width: 400px; /* Limite la largeur maximale des commentaires */
+    word-wrap: break-word; /* Permet de diviser les mots longs pour qu'ils s'ajustent à la largeur */
+}
+.date-text {
+    font-size: 12px; /* Modifier la taille de police selon vos préférences */
+}

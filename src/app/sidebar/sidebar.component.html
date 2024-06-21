@@ -5,6 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
   <div class="sidebar">
@@ -14,74 +16,99 @@
       <i class="bx bx-menu" id="btn"></i>
     </div>
     <ul class="nav-list">
-       <li>
-        <i class="bx bx-search"></i>
-        <input type="text" placeholder="">
-         <span class="tooltip">Search</span>
-      </li> 
       <li>
+        <i class="bx bx-search"></i>
+        <input type="text" [(ngModel)]="searchTerm" (input)="filterItems()" placeholder="">
+        <span class="tooltip">Search</span>
+      </li>
+      <li *ngIf="filteredItems.includes('dashboard')">
         <a routerLink="/dashboard">
           <i class="bx bx-grid-alt"></i>
           <span class="link_name">Dashboard</span>
         </a>
         <span class="tooltip">Dashboard</span>
       </li>
-      <li>
-        <a href="#">
+      <li *ngIf="filteredItems.includes('profile')">
+        <a (click)="redirectToProfile()">
+          <i class="bx bx-user-circle"></i>
+          <span class="link_name">Profil</span>
+        </a>
+        <span class="tooltip">Profil</span>
+      </li>
+      <li *ngIf="filteredItems.includes('users') && authService.isResponsable()">  
+        <a routerLink="/users">
           <i class="bx bx-user"></i>
           <span class="link_name">User</span>
         </a>
-        <span class="tooltip">User</span>
+        <span class="tooltip">Utilisateurs</span>  
       </li>
-      <li>
-        <a href="#">
-          <i class="bx bx-chat"></i>
-          <span class="link_name">Message</span>
+      <li *ngIf="filteredItems.includes('publication') && authService.isAdmin()">
+        <a routerLink="/publication">
+          <i class="bx bx-message-square"></i>
+          <span class="link_name">Publication</span>
         </a>
-        <span class="tooltip">Message</span>
-      </li>
-      <li>
-        <a href="#">
-          <i class="bx bx-pie-chart-alt-2"></i>
-          <span class="link_name">Analytics</span>
+        <span class="tooltip">Publication</span>
+      </li>       
+      <li *ngIf="filteredItems.includes('notifications') && authService.isAdmin()">
+        <a routerLink="/notification">
+          <i class="bx bx-bell"></i>
+          <span class="link_name">Notifications</span>
         </a>
-        <span class="tooltip">Analytics</span>
+        <span class="tooltip">Notifications</span>
       </li>
-      <li>
-        <a href="#">
-          <i class="bx bx-folder"></i>
-          <span class="link_name">File Manger</span>
-        </a>
-        <span class="tooltip">File Manger</span>
-      </li>
-      <li>
-        <a href="#">
+      <li *ngIf="filteredItems.includes('order')">
+        <a routerLink="/order">
           <i class="bx bx-cart-alt"></i>
           <span class="link_name">Order</span>
         </a>
         <span class="tooltip">Order</span>
       </li>
-      <li>
-        <a href="#">
+      <li *ngIf="filteredItems.includes('settings')">
+        <a routerLink="/settings">
           <i class="bx bx-cog"></i>
           <span class="link_name">Settings</span>
         </a>
         <span class="tooltip">Settings</span>
       </li>
-       <li class="profile">
+      <li class="profile">
         <div class="profile_details">
           <div class="profile_content">
           </div>
         </div>
-        <i class="bx bx-log-out" id="log_out"></i>
+        <i class="bx bx-log-out" routerLink="/login" id="log_out"></i>
       </li>
     </ul>
   </div>
+
+
+  
   <section class="home-section">
     <div class="text">Dashboard</div>
 
     <div class="card-container">
       <div class="card-group">
+        
+        <div class="notification-icons">
+          <div class="notification-icon" *ngIf="nombreNotificationsAbsence > 0 && authService.isAdmin()"> 
+            <a (click)="showNotification()" routerLink="/notification" class="btn btn-link" title="Demandes absence">
+              <i class="material-icons" style="font-size:38px;color:rgb(176, 124, 1)">notifications_active</i>
+
+              <span class="notification-badge">{{ nombreNotificationsAbsence }}</span>
+            </a>
+          </div>
+          <div class="notification-icon" *ngIf="nombreNotificationsPret > 0 && authService.isAdmin()"> 
+            <a (click)="showNotification()" routerLink="/notification" class="btn btn-link" title="Demandes prets">
+              <i class="material-icons" style="font-size:38px;color:rgb(10, 78, 6)">notifications_active</i>
+              <span class="notification-badge">{{ nombreNotificationsPret }}</span>
+            </a>
+          </div>
+          <div class="notification-icon" *ngIf="nombreNotificationsConge > 0 && authService.isAdmin()"> 
+            <a (click)="showNotification()" routerLink="/notification" class="btn btn-link" title="Demandes congés">
+              <i class="material-icons" style="font-size:38px;color:rgb(6, 30, 78)">notifications_active</i>
+              <span class="notification-badge">{{ nombreNotificationsConge }}</span>
+            </a>
+          </div>
+        </div>
 
         <a routerLink="/personnel">
           <div class="card">
@@ -173,7 +200,6 @@
         </div>
       </div>
     </a>
-
     </div>
     </div>
   </section>

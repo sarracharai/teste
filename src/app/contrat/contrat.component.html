@@ -26,8 +26,8 @@
                             <td>{{ c.dateSignature }}</td>
                             <td>{{ c.nomSociete }}</td>
                             <td>
-                                <button type="button"  *ngIf="authService.isAdmin()" class="btn btn-danger" (click)="supprimerContrat(c)">Supprimer</button>
-                                <a  *ngIf="authService.isAdmin()" class="btn btn-warning" [routerLink]="['/updateContrat', c.idContrat]">Modifier</a>
+                                <button type="button"  *ngIf="authService.isAdmin() || authService.isResponsable()" class="btn btn-danger" (click)="supprimerContrat(c)">Supprimer</button>
+                                <a  *ngIf="authService.isAdmin() || authService.isResponsable()" class="btn btn-warning" [routerLink]="['/updateContrat', c.idContrat]">Modifier</a>
                             </td>
                         </tr>
                     </tbody>

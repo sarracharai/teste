@@ -31,14 +31,14 @@ updatePersonnel() {
   return; //  si l'email est invalide ne soumettez pas le formulaire
 }
 // Vérifier si tous les champs requis sont remplis
-if (!this.currentPersonnel.nomPersonnel || !this.currentPersonnel.prenomPersonnel || !this.currentPersonnel.dateNaissance || !this.currentPersonnel.email || !this.currentPersonnel.numTelephone || !this.currentPersonnel.adresse || !this.currentPersonnel.fonction || !this.updatedDepId) {
+if (!this.currentPersonnel.nom || !this.currentPersonnel.prenom || !this.currentPersonnel.dateNaissance || !this.currentPersonnel.email || !this.currentPersonnel.numTelephone || !this.currentPersonnel.adresse || !this.currentPersonnel.fonction || !this.updatedDepId) {
   alert('Veuillez remplir tous les champs.');
   return; // Ne soumettez pas le formulaire si un champ est vide
 }
 
 this.currentPersonnel.departement = this.departements?.find(dep => dep.idDep == this.updatedDepId)!; 
  this.personnelService.updatePersonnel(this.currentPersonnel).subscribe(person => {
- this.router.navigate(['/profil', this.currentPersonnel.idPersonnel]);
+ this.router.navigate(['/profil', this.currentPersonnel.id]);
    });
 }
 
@@ -115,23 +115,3 @@ ngOnInit(): void {
 
 }
 
-
-/*
-
- <div class="mb-3">
-      <label for="dateNaissance" class="form-label">Date Naissance:</label>
-      <input type="date" [(ngModel)]="currentPersonnel.dateNaissance" name="dateNaissance" class="form-control" required #dateNaissanceField="ngModel"
-        [max]="getCurrentDate() | date: 'yyyy-MM-dd'">
-      <div *ngIf="!isDateOfBirthValid()" class="text-danger">
-        <div *ngIf="dateNaissanceField?.invalid && (dateNaissanceField?.dirty || dateNaissanceField?.touched)">
-          <div *ngIf="!currentPersonnel.dateNaissance">La date de naissance est requise.</div>
-        </div> 
-          <div *ngIf="currentPersonnel.dateNaissance && currentPersonnel.dateNaissance > getCurrentDate()">
-            La date de naissance {{ currentPersonnel.dateNaissance | date: 'dd/MM/yyyy' }} ne peut pas être dans le futur.
-        </div>
-        <div *ngIf="currentPersonnel.dateNaissance && getDateOfBirthError() === 3">
-            Le personnel doit être âgé d'au moins 18 ans. (Date de naissance: {{ currentPersonnel.dateNaissance | date: 'dd/MM/yyyy' }})
-        </div>
-      </div>
-    </div>
-*/

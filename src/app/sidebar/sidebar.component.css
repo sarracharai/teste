@@ -346,3 +346,20 @@ body, html {
   margin-bottom: 0;
 }
 
+.notification-icons {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end; /* Aligner les éléments à droite */
+}
+
+.notification-icon {
+  margin-bottom: 10px; /* Espacement entre les icônes */
+}
+
+/* sidebar.component.css */
+.hide-text {
+  display: none;
+}

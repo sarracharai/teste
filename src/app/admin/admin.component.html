@@ -1,0 +1,66 @@
+<app-navbar></app-navbar>
+
+<div class="container emp-profile mt-5">
+    <div class="row">
+        <div class="col-md-4 text-center">
+            <div class="profile-img">
+                <img src="assets/profil.jpg" alt="Profile Image">
+                <div class="profile-name mt-3">
+                    <h5>{{ adminData?.prenom }} {{ adminData?.nom }}</h5>
+                    <h6>{{ adminData?.fonction }}</h6>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="profile-details">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>ID Utilisateur</label>
+                        <p>{{ adminData?.id }}</p>
+                    </div>
+                    <div class="col-md-6">
+                        <label>Date de Naissance</label>
+                        <p>{{ adminData?.dateNaissance | date:'dd/MM/yyyy' }}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>Adresse</label>
+                        <p>{{ adminData?.adresse }}</p>
+                    </div>
+                    <div class="col-md-6">
+                        <label>Email</label>
+                        <p>{{ adminData?.email }}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>Téléphone</label>
+                        <p>{{ adminData?.numTelephone }}</p>
+                    </div>
+                    <div class="col-md-6">
+                        <label>Fonction</label>
+                        <p>{{ adminData?.fonction }}</p>
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    <div class="col-md-12 text-center">
+                        <button type="button" class="btn btn-primary" (click)="navigateToProfileEdit()">Modifier le profil</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,25 +1,52 @@
-<div class="container mt-5">
-    <div class="row justify-content-md-center">
-        <div class="col-md-4">
-            <div class="alert alert-danger" *ngIf="err==1"> 
-                <strong>login ou mot de passe erronés..</strong> 
-            </div>
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+  <head>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div class="main"> 
+      <div class="container a-container" id="a-container">
+          <form class="form" id="b-form" method="" action="">
+            <h2 class="form_title title">Se connecter </h2>
 
-            <form>
-                <div class="form-group">
-                    <label>Nom Utilisateur :</label>
-                    <input type="text" name="username" class="form-control" [(ngModel)]="user.username">
-                </div>
-                <div class="form-group">
-                    <label>Mot de passe :</label>
-                    <input type="password" name="password" [(ngModel)]="user.password" class="form-control">
-                </div>
+             <!-- Alerte d'erreur avec Angular -->
+    <div class="alert alert-danger" *ngIf="err == 1">
+      <strong>{{message}}</strong>
+    </div> 
+            <input class="form__input" type="text" name="username" id="userName" placeholder="Nom d'utilisateur" [(ngModel)]="user.username" required>
+            <input class="form__input" type="password" name="password" id="pwd" placeholder="Mot de passe" [(ngModel)]="user.password" required>
+            <a class="form__link">Mot de passe oublié ?</a>
+            <button class="form__button button submit" (click)="onLoggedin()">SE CONNECTER</button>
+        </form>
+      </div>
 
-                <p>Vous n'avez pas un compte? <a routerLink="/register">S'inscrire </a></p>
-                
-                <div class="row justify-content-md-center">
-                    <button type="button" (click)="onLoggedin()" class="btn btn-success">Connexion</button>
-                </div>
-            </form>
+      <div class="switch" id="switch-cnt">
+     <div class="switch__circle"></div>
+        <div class="switch__circle switch__circle--t"></div>
+        <div class="switch__container" id="switch-c1">
+          <div class="logo">
+            <img src="\assets\logo.png" alt="Logo">
+          </div>
+          <div class="text-center mt-4 name">
+            Ressources Humaines
+          </div>
+          <h2 class="switch__title title">Bienvenue !</h2>
+          <p class="switch__description description">Entrez vos coordonnées personnelles et commencez avec nous</p>
+          <button class="switch__button button switch-btn" routerLink="/register" >S'INSCRIRE</button>
         </div>
+
+      </div>
     </div>
+   
+  </body>
+</html>
+
+
+
+
+
+
+

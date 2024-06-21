@@ -1,0 +1,63 @@
+<app-navbar></app-navbar>
+
+<div class="container emp-profile mt-5">
+    <div class="row">
+        <div class="col-md-4 text-center">
+            <div class="profile-img">
+                <img src="assets/profil.jpg" alt="Profile Image">
+                <div class="profile-name mt-3">
+                    <h5>{{ responsableData?.prenom }} {{ responsableData?.nom }}</h5>
+                    <h6>{{ responsableData?.fonction }}</h6>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="profile-details">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>ID Utilisateur</label>
+                        <p>{{ responsableData?.id }}</p>
+                    </div>
+                    <div class="col-md-6">
+                        <label>Date de Naissance</label>
+                        <p>{{ responsableData?.dateNaissance | date:'dd/MM/yyyy' }}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>Adresse</label>
+                        <p>{{ responsableData?.adresse }}</p>
+                    </div>
+                    <div class="col-md-6">
+                        <label>Email</label>
+                        <p>{{ responsableData?.email }}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>Téléphone</label>
+                        <p>{{ responsableData?.numTelephone }}</p>
+                    </div>
+                    <div class="col-md-6">
+                        <label>Fonction</label>
+                        <p>{{ responsableData?.fonction }}</p>
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    <div class="col-md-12 text-center">
+                        <input type="submit" class="profile-edit-btn" (click)="navigateToProfileEdit()" value="Edit Profile"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+                  
+                     

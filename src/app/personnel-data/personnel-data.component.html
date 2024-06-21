@@ -1,0 +1,317 @@
+  <app-navbar></app-navbar>
+
+  <head>
+    <!-- Favicons -->
+    <link href="assets/img/favicon.png" rel="icon">
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  </head>
+
+  <body>
+ <!-- ======= Mobile nav toggle button ======= -->
+ <button type="button" class="mobile-nav-toggle d-xl-none"><i class="bi bi-list mobile-nav-toggle"></i></button>
+ 
+ <!-- ======= Header ======= -->
+ <header id="header" class="d-flex flex-column justify-content-center">
+
+   <nav id="navbar" class="navbar nav-menu">
+     <ul>
+      <div class="notification-icon" *ngIf="personnelNotif || nombreNotificationsAccepte > 0 && authService.isUserOnly()"> 
+          <a (click)="showNotification()" routerLink="/notification" class="btn btn-link" title="Notifications acceptées">
+            <i class="material-icons" style="font-size:38px;color:green">check_circle</i>
+            <span class="notification-badge text-green">{{  nombreNotificationsAccepte }}</span>
+         </a>
+         </div>
+
+        <div class="notification-icon" *ngIf=" personnelNotif || nombreNotificationsRefuse > 0 && authService.isUserOnly()"> 
+          <a (click)="showNotification()" routerLink="/notification" class="btn btn-link" title="Notifications refusées">
+             <i class="material-icons" style="font-size:38px;color:rgb(218, 38, 38)">cancel</i>
+             <span class="notification-badge text-red">{{ nombreNotificationsRefuse }}</span>
+          </a>
+         </div>
+       <li><a (click)="navigateToSection('hero')" class="nav-link scrollto"><i class="bx bx-home"></i> <span>Home</span></a></li>
+       <li><a (click)="navigateToSection('about')" class="nav-link scrollto"><i class="bx bx-user"></i> <span>About</span></a></li>
+       <li><a (click)="navigateToSection('services')" class="nav-link scrollto"><i class="bx bx-server"></i> <span>Services</span></a></li>
+       <li><a (click)="navigateToSection('contact')" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span>Contact</span></a></li>
+    
+     </ul>
+   </nav>
+
+ </header>
+ 
+
+ <!-- ======= Hero Section ======= -->
+ <section id="hero" class="d-flex flex-column justify-content-center">
+   <div class="container" data-aos="zoom-in" data-aos-delay="100">
+    <div *ngIf="personnelData">
+      <h1>Bienvenue, {{ personnelData?.nom }} {{ personnelData?.prenom }}</h1>
+    </div>
+     <br>
+     <br>
+     <div class="social-links">
+       <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+       <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+       <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+       <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+       <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+     </div>
+   </div>
+ </section><!-- End Hero -->
+
+ <main id="main">
+
+   <!-- ======= About Section ======= -->
+   
+   <section id="about" class="about" >
+     <div class="container" data-aos="fade-up">
+       <div class="section-title">
+         <h2>A propos</h2>
+         <p>Explorez ici pour accéder à vos informations personnelles. Mettez à jour vos coordonnées pour nous permettre de rester en contact avec vous de manière rapide et efficace.</p>
+       </div>
+
+       <div class="row">
+        <div class="col-lg-4 d-flex justify-content-center align-items-center flex-column">
+          <div class="background d-flex justify-content-center align-items-center">
+          <img src="assets/profile.png" alt="Avatar" class="img-fluid my-5" style="width: 150px;">
+          <div class="d-flex justify-content-center align-items-center">
+            <br><i class="fas fa-edit fa-2x" style="color: black;" (click)="navigateToProfileEdit()"></i>
+          </div>
+        </div>
+          </div>
+        
+         <div class="col-lg-8 pt-4 pt-lg-0 content">
+           
+           <br>
+           <br>
+           <div class="row">
+             <div class="col-lg-6">
+              
+               <ul>
+                 <li><strong>Nom :</strong> <span>{{ personnelData?.nom }}</span></li>
+                 <li><strong>Numero Cin:</strong> <span>{{ personnelData?.numCin }}</span></li>
+                 <li><strong>Numero Telephone:</strong> <span>{{ personnelData?.numTelephone }}</span></li>
+                 <li><strong>Prenom:</strong> <span>{{ personnelData?.numTelephone }}</span></li>
+                 <li><strong>Fonction:</strong> <span>{{ personnelData?.fonction }}</span></li>
+               </ul>
+             </div>
+           
+             <div class="col-lg-6">
+               <ul>
+                <li><strong>Prenom:</strong> <span>{{ personnelData?.prenom }}</span></li>
+                <li><strong>Date De Naisance:</strong> <span>{{ personnelData?.dateNaissance | date:'dd/MM/yyyy' }}</span></li>
+                 <li><strong>Email:</strong> <span>{{ personnelData?.email }}</span></li>
+                 <li><strong>Adresse:</strong> <span>{{ personnelData?.adresse }}</span></li>
+                 <li><strong>Departement:</strong> <span>{{ personnelData?.departement.nomDep }}</span></li>
+               </ul> 
+             </div>
+           </div>
+         </div>
+           <p>
+            
+           </p>
+         </div>
+       </div>
+     <!-- </div> -->
+   </section><!-- End About Section -->
+
+   <!-- ======= Services Section ======= -->
+   <section id="services" class="services">
+     <div class="container" data-aos="fade-up">
+       <div class="section-title">
+         <h2>Services</h2>
+         <p>Bienvenue dans votre espace personnel. Ici, vous pouvez accéder à toutes les fonctionnalités liées à votre profil utilisateur.
+          Découvrez votre espace, conçu pour simplifier votre expérience RH. Explorez les différents onglets pour gérer votre profil
+         </p>
+       </div>
+       <div class="row">
+         <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="100">
+           <div class="icon">
+            <img src="/assets/contrat.png" alt="contrat" style="max-width: 100%; height: auto;">
+          </div>
+          
+           <h4 class="title"><a routerLink="/userContrat-data">Contrat</a></h4>
+           <p class="description">Accédez à vos contrats d'emploi et consulter les termes et les conditions spécifiques à votre engagement professionnel</p>
+         </div>
+
+
+         <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="300">
+          <div class="icon">
+           <img src="/assets/notif.jpg" alt="conge" style="max-width: 100%; height: auto;">
+        </div>
+          <h4 class="title"><a routerLink="/addNotification">demander</a></h4>
+          <p class="description">Soumettez votre demande de prêt/absence/congé directement via notre application et suivez l'état de votre demande en temps réel</p>
+        </div>
+
+        <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="300">
+          <div class="icon">
+           <img src="/assets/conge.png" alt="Absence" style="max-width: 100%; height: auto;">
+        </div>
+        <h4 class="title"><a routerLink="/userConge-data">Conge</a></h4>
+          <p class="description">Consultez vos congés en toute simplicité directement depuis notre application</p>
+        </div>
+
+
+         <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="200">
+           <div class="icon"><img src="/assets/prettttt.png" alt="prettttt" style="max-width: 100%; height: auto;">
+         </div>
+           <h4 class="title"><a routerLink="/userPret-data">Pret</a></h4>
+           <p class="description">Accéder à toutes les informations relatives à vos demandes de prêt</p>
+         </div>
+
+         <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="300">
+          <div class="icon">
+           <img src="/assets/assuiduite.png" alt="assiduiteP" style="max-width: 100%; height: auto;">
+        </div>
+          <h4 class="title"><a routerLink="/userAssiduite-data">assuiduite </a></h4>
+          <p class="description">Suivez votre assiduité et consultez vos heures de présence directement depuis notre application</p>
+        </div>
+
+
+         <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="300">
+           <div class="icon">
+            <img src="/assets/documentadministratif.png" alt="documentadministratif" style="max-width: 100%; height: auto;">
+         </div>
+           <h4 class="title"><a routerLink="/userDoc-data">Document Administratif</a></h4>
+           <p class="description">Accédez à vos documents administratifs et consultez-les facilement via notre application</p>
+         </div>
+   
+       </div>
+     </div>
+   </section><!-- End Services Section -->
+
+   <!-- ======= Contact Section ======= -->
+   <section id="contact" class="contact">
+     <div class="container" data-aos="fade-up">
+
+       <div class="section-title">
+         <h2>Contact</h2>
+         <p>Pour toute question ou assistance, n'hésitez pas à nous contacter via ce formulaire.</p>
+       </div>
+
+       <div class="row">
+         <div class="col-lg-6">
+           <div class="info-box mb-4">
+             <i class="bx bx-map"></i>
+             <h3> Addresse</h3>
+             <span>{{personnelData?.adresse}}</span>
+           </div>
+         </div>
+
+         <div class="col-lg-3 col-md-6">
+           <div class="info-box  mb-4">
+             <i class="bx bx-envelope"></i>
+             <h3>Envoyez-nous un email</h3>
+             <p>charaiisarah@gmail.com</p>
+           </div>
+         </div>
+
+         <div class="col-lg-3 col-md-6">
+           <div class="info-box  mb-4">
+             <i class="bx bx-phone-call"></i>
+             <h3>Contactez nous</h3>
+             <p>+216369399</p>
+           </div>
+         </div>
+
+       </div>
+
+       <div class="row">
+         <div class="col-lg-6 ">
+           <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+             <div class="row gy-4">
+
+               <div class="col-md-6">
+                 <input type="text" name="name" class="form-control" placeholder="Your Name" required>
+               </div>
+
+               <div class="col-md-6 ">
+                 <input type="email" class="form-control" name="email" placeholder="Your Email" required>
+               </div>
+
+               <div class="col-md-12">
+                 <input type="text" class="form-control" name="subject" placeholder="Subject" required>
+               </div>
+
+               <div class="col-md-12">
+                 <textarea class="form-control" name="message" rows="6" placeholder="Message" required></textarea>
+               </div>
+
+               <div class="col-md-12 text-center">
+                 <div class="loading">Loading</div>
+                 <div class="error-message"></div>
+                 <div class="sent-message">Votre Message est bien recue. merci bien!</div>
+
+                 <button type="submit">Envoyer Message </button>
+               </div>
+
+             </div>
+           </form>
+
+         </div>
+
+         <div class="col-lg-6 ">
+           <div class="map mb-4 mb-lg-0">
+            <iframe style="border:0; width: 100%; height: 100%; min-height: 300px;" src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d12780.601477961047!2d10.1143183!3d36.79094495!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sfr!2stn!4v1716130085255!5m2!1sfr!2stn" width="400" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+           </div>
+
+         </div>
+
+       </div>
+
+     </div>
+   </section><!-- End Contact Section -->
+
+ </main><!-- End #main -->
+
+ <!-- ======= Footer ======= -->
+ <footer id="footer">
+   <div class="container">
+     <h3>{{personnelData?.nom}}  {{personnelData?.prenom}}</h3>
+     <p>
+      {{personnelData?.adresse}} <br><br>
+       <strong>Telephone</strong>{{personnelData?.Telephone}}<br>
+       <strong>Email:</strong> {{personnelData?.email}}<br>
+     </p>
+     <div class="social-links">
+       <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+       <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+       <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+       <a href="#" class="google-plus"><i class="bi bi-skype"></i></a>
+       <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+     </div>
+   </div>
+ </footer><!-- End Footer -->
+
+ <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+</body>
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+

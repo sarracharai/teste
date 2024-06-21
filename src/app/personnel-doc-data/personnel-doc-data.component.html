@@ -1,0 +1,33 @@
+<app-navbar></app-navbar>
+  <div class="card">
+<div *ngIf="docData">
+     <!-- <h1>Bienvenue, {{ docData?.personnel.nomPersonnel}} {{ docData?.personnel.prenomPersonnel }}</h1>  -->
+  </div>
+  <div class="card-body">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+         
+          <th scope="col">idDocument</th>
+          <th scope="col">type</th>
+          <th scope="col">dateCreation</th>
+          <th scope="col">username</th>
+         
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+         
+          <td>{{ docData?.idDocument }}</td>
+          <td>{{ docData?.type }}</td>
+          <td>{{ docData?.dateCreation }}</td>
+          <td>{{ docData?.username }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <div *ngIf="error">
+    <p>Erreur lors de la récupération des documents.</p>
+  </div>
+  </div>

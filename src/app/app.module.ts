@@ -37,6 +37,30 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { UpdateDepartementComponent } from './update-departement/update-departement.component';
 import { RegisterComponent } from './register/register.component';
 import { VerifEmailComponent } from './verif-email/verif-email.component';
+import { PersonnelDataComponent } from './personnel-data/personnel-data.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { PersonnelCongeDataComponent } from './personnel-conge-data/personnel-conge-data.component';
+import { PersonnelPretDataComponent } from './personnel-pret-data/personnel-pret-data.component';
+import { PersonnelContratDataComponent } from './personnel-contrat-data/personnel-contrat-data.component';
+import { PersonnelAssiduiteDataComponent } from './personnel-assiduite-data/personnel-assiduite-data.component';
+import { ResponsableComponent } from './responsable/responsable.component';
+import { NotificationComponent } from './notification/notification.component';
+import { AddNotificationComponent } from './add-notification/add-notification.component';
+import { UpdateNotificationComponent } from './update-notification/update-notification.component';
+import { EditProfilComponent } from './edit-profil/edit-profil.component';
+import { EditProfilRespComponent } from './edit-profil-resp/edit-profil-resp.component';
+import { AdminComponent } from './admin/admin.component';
+import { EditProfilAdminComponent } from './edit-profil-admin/edit-profil-admin.component';
+import { PersonnelDocDataComponent } from './personnel-doc-data/personnel-doc-data.component';
+import { AddPublicationComponent } from './add-publication/add-publication.component';
+import { PublicationComponent } from './publication/publication.component';
+import { UsersComponent } from './users/users.component';
+import { NewProfilComponent } from './new-profil/new-profil.component';
+import { NewProfilRhComponent } from './new-profil-rh/new-profil-rh.component';
+import { ProfilAdministrateurComponent } from './profil-administrateur/profil-administrateur.component';
+import {  UpdateAdminComponent } from './update-admin/update-admin.component';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -73,7 +97,29 @@ import { VerifEmailComponent } from './verif-email/verif-email.component';
     NavbarComponent,
     UpdateDepartementComponent,
     RegisterComponent,
-    VerifEmailComponent
+    VerifEmailComponent,
+    PersonnelDataComponent,
+    DashboardComponent,
+    PersonnelCongeDataComponent,
+    PersonnelPretDataComponent,
+    PersonnelContratDataComponent,
+    PersonnelAssiduiteDataComponent,
+    ResponsableComponent,
+    NotificationComponent,
+    AddNotificationComponent,
+    UpdateNotificationComponent,
+    EditProfilComponent,
+    EditProfilRespComponent,
+    AdminComponent,
+    EditProfilAdminComponent,
+    PersonnelDocDataComponent,
+    AddPublicationComponent,
+    PublicationComponent,
+    UsersComponent,
+    NewProfilComponent,
+    NewProfilRhComponent,
+    ProfilAdministrateurComponent,
+    UpdateAdminComponent
   ],
   imports: [
     BrowserModule,
@@ -81,7 +127,10 @@ import { VerifEmailComponent } from './verif-email/verif-email.component';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(), // ToastrModule added
+    
+  
   ],
   providers: [],
   bootstrap: [AppComponent]

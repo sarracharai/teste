@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Document } from '../model/docAdministratifs.model';
 import { PersonnelService } from '../services/personnel.service';
+
 @Component({
   selector: 'app-add-document',
   templateUrl: './add-document.component.html',
@@ -9,25 +10,32 @@ import { PersonnelService } from '../services/personnel.service';
 })
 export class AddDocumentComponent implements OnInit {
   newDocument = new Document();
-  
-  constructor(private personnelService: PersonnelService,
-    private router : Router) {}
+  file: File | undefined;
 
-    ngOnInit(): void {
-     
+  constructor(private personnelService: PersonnelService, private router: Router) {}
+
+  ngOnInit(): void {}
+
+  addDocument(): void {
+    // Vérifiez que tous les champs nécessaires sont remplis
+    if (!this.newDocument.type || !this.newDocument.dateCreation || !this.file) {
+      alert('Veuillez remplir tous les champs et ajouter un fichier.');
+      return;
     }
 
-    addDocument(){
-      
-       // Vérifier si tous les champs requis sont remplis
-    if (!this.newDocument.type || !this.newDocument.dateCreation ) {
-      alert('Veuillez remplir tous les champs.');
-    return; // Ne soumettez pas le formulaire si un champ est vide
-}
-            this.personnelService.ajouterDocument(this.newDocument).subscribe(() => {
-            this.router.navigate(['documents']);
-              });
-              }
+    // Formate la date au format ISO si elle est valide
+    const isoDate = new Date(this.newDocument.dateCreation).toISOString().split('T')[0];  // Obtenez uniquement YYYY-MM-DD
+    this.newDocument.dateCreation = isoDate;  // Mettez à jour la date dans le modèle Document
 
-              
+    // Appel à votre service pour ajouter le document
+    this.personnelService.ajouterDocument(this.newDocument, this.file).subscribe(() => {
+      this.router.navigate(['documents']);
+    });
+  }
+
+  onFileChange(event: any): void {
+    if (event.target.files.length > 0) {
+      this.file = event.target.files[0];
+    }
+  }
 }

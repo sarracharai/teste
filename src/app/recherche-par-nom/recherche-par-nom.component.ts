@@ -26,7 +26,7 @@ constructor(private personnelService:PersonnelService){}
 
   onKeyUp(filterText : string){ ////onkeyup
      this.personnels = this.allPersonnels.filter(item => 
-      item.nomPersonnel.toLowerCase().includes(filterText));
+      item.nom.toLowerCase().includes(filterText));
      }
 
   ngOnInit(): void {
